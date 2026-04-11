@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Discover Crew — AI & Digital Innovation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg-deep:#050811;--bg-card:rgba(10,15,30,0.75);
+  --cyan:#00e5ff;--cyan-dim:rgba(0,229,255,0.12);
+  --purple:#a855f7;--purple-dim:rgba(168,85,247,0.12);
+  --gold:#fbbf24;--gold-dim:rgba(251,191,36,0.15);
+  --white:#fff;--w80:rgba(255,255,255,0.8);--w50:rgba(255,255,255,0.5);
+  --w20:rgba(255,255,255,0.2);--w08:rgba(255,255,255,0.08);--w05:rgba(255,255,255,0.05);
+  --glass-border:rgba(255,255,255,0.1);
+  --ff-display:'Syne',sans-serif;--ff-body:'DM Sans',sans-serif;
+}
+html,body{width:100%;height:100%;background:var(--bg-deep);color:var(--white);font-family:var(--ff-body);overflow:hidden;}
+canvas{display:block;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:rgba(5,8,17,0.6);border-bottom:1px solid var(--glass-border);}
+.nav-logo{font-family:var(--ff-display);font-weight:800;font-size:1.35rem;letter-spacing:-0.5px;cursor:pointer;}
+.nav-logo span{color:var(--cyan);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:0.875rem;color:var(--w50);text-decoration:none;cursor:pointer;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:transparent;border:1px solid var(--cyan);color:var(--cyan);padding:.5rem 1.3rem;border-radius:4px;font-family:var(--ff-body);font-size:.875rem;cursor:pointer;transition:background .2s,color .2s;}
+.nav-cta:hover{background:var(--cyan);color:var(--bg-deep);}
+
+/* CANVAS BG */
+#bg-canvas{position:fixed;inset:0;z-index:0;}
+
+/* SCROLL */
+.scroll-outer{position:fixed;inset:0;z-index:1;overflow:hidden;}
+.scroll-track{display:flex;width:fit-content;height:100vh;will-change:transform;}
+.panel{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;}
+
+/* GLASS */
+.glass{backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);background:var(--bg-card);border:1px solid var(--glass-border);border-radius:16px;}
+
+/* PROGRESS */
+.progress-bar{position:fixed;bottom:0;left:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));z-index:200;transition:width .1s linear;}
+
+/* DOTS */
+.section-dots{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:12px;}
+.dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--w50);background:transparent;cursor:pointer;transition:all .3s;}
+.dot.active{background:var(--cyan);border-color:var(--cyan);transform:scale(1.4);}
+
+/* SCROLL HINT */
+.scroll-hint{position:fixed;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--w50);letter-spacing:.06em;transition:opacity .5s;}
+.hint-arrows{display:flex;gap:3px;}
+.hint-arrow{width:7px;height:7px;border-right:1.5px solid var(--w50);border-bottom:1.5px solid var(--w50);transform:rotate(-45deg);animation:arr 1.5s ease-in-out infinite;}
+.hint-arrow:nth-child(2){animation-delay:.2s;}.hint-arrow:nth-child(3){animation-delay:.4s;}
+@keyframes arr{0%,100%{opacity:.2}50%{opacity:1}}
+
+/* ── PANEL 1 HERO ── */
+.hero-content{position:absolute;left:6%;top:50%;transform:translateY(-50%);max-width:640px;padding:2rem 2.4rem;pointer-events:all;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.25);border-radius:100px;padding:.35rem 1rem;font-size:.75rem;font-weight:500;letter-spacing:.09em;color:var(--cyan);text-transform:uppercase;margin-bottom:1.5rem;}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.h1{font-family:var(--ff-display);font-size:clamp(2.8rem,5.5vw,4.6rem);font-weight:800;line-height:1.06;letter-spacing:-2px;margin-bottom:1.3rem;}
+.h1 .acc{background:linear-gradient(135deg,var(--cyan) 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:1.05rem;font-weight:300;color:var(--w50);line-height:1.8;max-width:460px;margin-bottom:2.2rem;}
+.hero-actions{display:flex;gap:1rem;}
+.btn-primary{background:linear-gradient(135deg,var(--cyan),var(--purple));color:var(--bg-deep);border:none;padding:.85rem 2rem;border-radius:6px;font-family:var(--ff-body);font-size:.95rem;font-weight:600;cursor:pointer;transition:opacity .2s,transform .2s;}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px);}
+.btn-ghost{background:transparent;border:1px solid var(--w20);color:var(--w80);padding:.85rem 2rem;border-radius:6px;font-family:var(--ff-body);font-size:.95rem;cursor:pointer;transition:border-color .2s,color .2s;}
+.btn-ghost:hover{border-color:var(--w50);color:var(--white);}
+.hero-stats{display:flex;gap:2.5rem;margin-top:2.8rem;padding-top:1.8rem;border-top:1px solid var(--w08);}
+.stat-num{font-family:var(--ff-display);font-size:1.8rem;font-weight:700;color:var(--gold);letter-spacing:-1px;line-height:1;}
+.stat-label{font-size:.75rem;color:var(--w50);margin-top:4px;letter-spacing:.04em;}
+
+/* ── PANEL 2 SERVICES ── */
+.services-content{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:5.5rem 6%;pointer-events:all;}
+.section-label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin-bottom:.6rem;}
+.section-h2{font-family:var(--ff-display);font-size:clamp(1.9rem,3.2vw,3rem);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:.5rem;}
+.section-sub{font-size:.95rem;color:var(--w50);max-width:480px;line-height:1.7;margin-bottom:2rem;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;max-width:1060px;}
+.scard{padding:1.7rem;border-radius:14px;background:rgba(10,15,35,0.6);border:1px solid var(--glass-border);backdrop-filter:blur(20px);transition:border-color .3s,transform .3s;cursor:default;position:relative;overflow:hidden;}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:14px 14px 0 0;opacity:0;transition:opacity .3s;}
+.scard.cyan::before{background:linear-gradient(90deg,var(--cyan),transparent);}
+.scard.purple::before{background:linear-gradient(90deg,var(--purple),transparent);}
+.scard.gold::before{background:linear-gradient(90deg,var(--gold),transparent);}
+.scard:hover::before{opacity:1;}
+.scard:hover{transform:translateY(-4px);border-color:var(--w20);}
+.sicon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.9rem;}
+.sicon.cyan{background:var(--cyan-dim);}.sicon.purple{background:var(--purple-dim);}.sicon.gold{background:var(--gold-dim);}
+.stitle{font-family:var(--ff-display);font-size:1rem;font-weight:700;margin-bottom:.45rem;}
+.sdesc{font-size:.83rem;color:var(--w50);line-height:1.7;}
+.stag{display:inline-block;margin-top:.9rem;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding:.28rem .65rem;border-radius:4px;}
+.stag.cyan{background:var(--cyan-dim);color:var(--cyan);}.stag.purple{background:var(--purple-dim);color:var(--purple);}.stag.gold{background:var(--gold-dim);color:var(--gold);}
+.product-card{margin-top:1.2rem;max-width:1060px;padding:1.4rem 1.8rem;border-radius:14px;background:linear-gradient(135deg,rgba(0,229,255,.05),rgba(168,85,247,.05));border:1px solid rgba(0,229,255,.2);backdrop-filter:blur(20px);display:flex;align-items:center;gap:2rem;}
+.product-info{flex:1;}
+.product-name{font-family:var(--ff-display);font-size:1.25rem;font-weight:800;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.35rem;}
+.product-desc{font-size:.85rem;color:var(--w50);line-height:1.65;}
+.product-cta{background:linear-gradient(135deg,var(--cyan),var(--purple));color:var(--bg-deep);border:none;padding:.65rem 1.5rem;border-radius:6px;font-weight:700;font-size:.875rem;cursor:pointer;white-space:nowrap;font-family:var(--ff-body);transition:opacity .2s;}
+.product-cta:hover{opacity:.85;}
+
+/* ── PANEL 3 CONTACT ── */
+.contact-content{width:100%;height:100%;display:flex;align-items:center;justify-content:center;gap:4rem;padding:5rem 6%;pointer-events:all;}
+.testimonials-col{flex:1;max-width:460px;}
+.contact-col{flex:1;max-width:400px;}
+.tcard{padding:1.5rem;border-radius:14px;background:rgba(10,15,35,0.7);border:1px solid var(--glass-border);backdrop-filter:blur(20px);margin-bottom:1rem;}
+.ttext{font-size:.88rem;color:var(--w80);line-height:1.75;font-style:italic;margin-bottom:.9rem;}
+.tauthor{display:flex;align-items:center;gap:10px;}
+.tavatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;}
+.tavatar.cyan{background:var(--cyan-dim);color:var(--cyan);}.tavatar.purple{background:var(--purple-dim);color:var(--purple);}.tavatar.gold{background:var(--gold-dim);color:var(--gold);}
+.tname{font-weight:600;font-size:.83rem;}.trole{font-size:.73rem;color:var(--w50);}
+.stars{color:var(--gold);font-size:.78rem;margin-bottom:.5rem;letter-spacing:2px;}
+.contact-box{padding:1.8rem;}
+.ctitle{font-family:var(--ff-display);font-size:1.7rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.4rem;}
+.csub{font-size:.86rem;color:var(--w50);margin-bottom:1.4rem;line-height:1.6;}
+.fg{margin-bottom:.9rem;}
+.fi,.ft{width:100%;background:var(--w05);border:1px solid var(--glass-border);border-radius:8px;padding:.7rem .95rem;color:var(--white);font-family:var(--ff-body);font-size:.88rem;outline:none;transition:border-color .2s;}
+.fi:focus,.ft:focus{border-color:var(--cyan);}
+.fi::placeholder,.ft::placeholder{color:var(--w20);}
+.ft{resize:none;height:85px;}
+.fsub{width:100%;background:linear-gradient(135deg,var(--cyan),var(--purple));color:var(--bg-deep);border:none;padding:.82rem;border-radius:8px;font-family:var(--ff-body);font-size:.93rem;font-weight:700;cursor:pointer;transition:opacity .2s;margin-top:.4rem;}
+.fsub:hover{opacity:.85;}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.fade-left{opacity:0;transform:translateX(-50px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.fade-right{opacity:0;transform:translateX(50px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.vis{opacity:1!important;transform:translate(0)!important;}
+.d1{transition-delay:.1s!important;}.d2{transition-delay:.22s!important;}.d3{transition-delay:.36s!important;}.d4{transition-delay:.5s!important;}.d5{transition-delay:.65s!important;}.d6{transition-delay:.8s!important;}
+</style>
+</head>
+<body>
+
+<!-- 3D Background Canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-logo" onclick="scrollTo(0)">Discover<span>Crew</span></div>
+  <ul class="nav-links">
+    <li><a onclick="scrollTo(0)">Home</a></li>
+    <li><a onclick="scrollTo(1)">Services</a></li>
+    <li><a onclick="scrollTo(2)">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="scrollTo(2)">Get Started</button>
+</nav>
+
+<!-- Horizontal Scroll -->
+<div class="scroll-outer">
+  <div class="scroll-track" id="track">
+
+    <!-- PANEL 1: HERO -->
+    <div class="panel" id="panel-0">
+      <div class="hero-content glass">
+        <div class="eyebrow fade-left" data-panel="0"><span class="eyebrow-dot"></span>AI-Powered Digital Innovation</div>
+        <h1 class="h1 fade-left d1" data-panel="0">
+          We Build<br/><span class="acc">Tomorrow's</span><br/>Digital Reality
+        </h1>
+        <p class="hero-sub fade-left d2" data-panel="0">
+          Discover Crew delivers cutting-edge web development, strategic digital marketing,
+          and AI automation — plus our own proprietary product, <strong>Ventura AI</strong>.
+        </p>
+        <div class="hero-actions fade-left d3" data-panel="0">
+          <button class="btn-primary" onclick="scrollTo(1)">Explore Services</button>
+          <button class="btn-ghost">View Ventura AI →</button>
+        </div>
+        <div class="hero-stats fade-up d4" data-panel="0">
+          <div><div class="stat-num">120+</div><div class="stat-label">Projects Delivered</div></div>
+          <div><div class="stat-num">40+</div><div class="stat-label">Happy Clients</div></div>
+          <div><div class="stat-num">98%</div><div class="stat-label">Satisfaction Rate</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 2: SERVICES -->
+    <div class="panel" id="panel-1">
+      <div class="services-content">
+        <div class="fade-left" data-panel="1">
+          <p class="section-label">What We Do</p>
+          <h2 class="section-h2">Services &amp; Products</h2>
+          <p class="section-sub">End-to-end digital solutions — from strategy to deployment. We combine creativity with engineering precision.</p>
+        </div>
+        <div class="services-grid">
+          <div class="scard cyan fade-up d2" data-panel="1">
+            <div class="sicon cyan">⚡</div>
+            <div class="stitle">Web Development</div>
+            <div class="sdesc">Blazing-fast, pixel-perfect web applications built with modern frameworks. From landing pages to enterprise SaaS.</div>
+            <span class="stag cyan">Full Stack</span>
+          </div>
+          <div class="scard purple fade-up d3" data-panel="1">
+            <div class="sicon purple">🎯</div>
+            <div class="stitle">Digital Marketing</div>
+            <div class="sdesc">Data-driven campaigns that convert. SEO, paid ads, content strategy, and social media that delivers measurable ROI.</div>
+            <span class="stag purple">Growth</span>
+          </div>
+          <div class="scard gold fade-up d4" data-panel="1">
+            <div class="sicon gold">🤖</div>
+            <div class="stitle">AI &amp; Automation</div>
+            <div class="sdesc">Integrate cutting-edge AI into your business workflows. Automate tasks and unlock intelligent insights at scale.</div>
+            <span class="stag gold">AI-Powered</span>
+          </div>
+        </div>
+        <div class="product-card fade-up d5" data-panel="1">
+          <div class="product-info">
+            <div class="product-name">⚡ Ventura AI</div>
+            <div class="product-desc">Our flagship AI product. An intelligent automation platform that helps businesses scale operations, generate insights, and drive revenue — powered by next-gen machine learning.</div>
+          </div>
+          <button class="product-cta">Launch App →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 3: CONTACT -->
+    <div class="panel" id="panel-2">
+      <div class="contact-content">
+        <div class="testimonials-col">
+          <div class="fade-left" data-panel="2">
+            <p class="section-label">Client Stories</p>
+            <h2 class="section-h2" style="margin-bottom:1.2rem">What They Say</h2>
+          </div>
+          <div class="tcard fade-left d2" data-panel="2">
+            <div class="stars">★★★★★</div>
+            <p class="ttext">"Discover Crew transformed our entire digital presence. Their AI automation saved us 30+ hours a week and the ROI was visible within the first month."</p>
+            <div class="tauthor"><div class="tavatar cyan">AM</div><div><div class="tname">Arjun Mehta</div><div class="trole">CEO, NexaTech Solutions</div></div></div>
+          </div>
+          <div class="tcard fade-left d3" data-panel="2">
+            <div class="stars">★★★★★</div>
+            <p class="ttext">"Ventura AI is genuinely revolutionary. The team didn't just build us a website — they built us a growth engine that runs on autopilot."</p>
+            <div class="tauthor"><div class="tavatar purple">PR</div><div><div class="tname">Priya Rajan</div><div class="trole">Founder, GrowthBloc</div></div></div>
+          </div>
+          <div class="tcard fade-left d4" data-panel="2">
+            <div class="stars">★★★★★</div>
+            <p class="ttext">"Our e-commerce conversion rate jumped 220% after their digital marketing overhaul. Exceptional team, exceptional results."</p>
+            <div class="tauthor"><div class="tavatar gold">DC</div><div><div class="tname">David Chen</div><div class="trole">CMO, UrbanCart</div></div></div>
+          </div>
+        </div>
+        <div class="contact-col fade-right d2" data-panel="2">
+          <div class="glass contact-box">
+            <div class="ctitle">Let's Build Together</div>
+            <p class="csub">Ready to transform your digital presence? Drop us a message — we respond within 24 hours.</p>
+            <form onsubmit="handleForm(event)">
+              <div class="fg"><input class="fi" type="text" placeholder="Your Name" required/></div>
+              <div class="fg"><input class="fi" type="email" placeholder="Email Address" required/></div>
+              <div class="fg"><input class="fi" type="text" placeholder="Company (optional)"/></div>
+              <div class="fg"><textarea class="ft" placeholder="Tell us about your project..." required></textarea></div>
+              <button type="submit" class="fsub">Send Message →</button>
+            </form>
+          </div>
+          <div style="margin-top:1rem;display:flex;gap:1rem;justify-content:center;">
+            <a href="#" style="color:var(--w50);font-size:.8rem;text-decoration:none;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--w50)'">LinkedIn</a>
+            <a href="#" style="color:var(--w50);font-size:.8rem;text-decoration:none;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--w50)'">Twitter/X</a>
+            <a href="#" style="color:var(--w50);font-size:.8rem;text-decoration:none;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--w50)'">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /scroll-track -->
+</div>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="prog"></div>
+
+<!-- Section dots -->
+<div class="section-dots" id="dots">
+  <div class="dot active" onclick="scrollTo(0)"></div>
+  <div class="dot" onclick="scrollTo(1)"></div>
+  <div class="dot" onclick="scrollTo(2)"></div>
+</div>
+
+<!-- Scroll hint -->
+<div class="scroll-hint" id="hint">
+  <span>Scroll to explore</span>
+  <div class="hint-arrows">
+    <div class="hint-arrow"></div>
+    <div class="hint-arrow"></div>
+    <div class="hint-arrow"></div>
+  </div>
+</div>
+
+<!-- THREE.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ═══════════════════════════════════════════════
+// 3D SCENE — Three.js AI Globe + Orbiting Objects
+// ═══════════════════════════════════════════════
+const canvas = document.getElementById('bg-canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.setClearColor(0x050811, 1);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.1, 100);
+camera.position.set(0, 1.5, 9);
+
+// Lighting
+scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+const ptCyan = new THREE.PointLight(0x00e5ff, 1.5, 30);
+ptCyan.position.set(8, 8, 8); scene.add(ptCyan);
+const ptPurple = new THREE.PointLight(0xa855f7, 1.0, 25);
+ptPurple.position.set(-8, -6, -5); scene.add(ptPurple);
+const ptGold = new THREE.PointLight(0xfbbf24, 0.7, 20);
+ptGold.position.set(0, 0, 6); scene.add(ptGold);
+
+// ── AI GLOBE ──
+const globeGroup = new THREE.Group(); scene.add(globeGroup);
+
+// Particle sphere
+const NODE_COUNT = 260;
+const nodePos = new Float32Array(NODE_COUNT * 3);
+const nodeCol = new Float32Array(NODE_COUNT * 3);
+for (let i = 0; i < NODE_COUNT; i++) {
+  const phi = Math.acos(2 * Math.random() - 1);
+  const theta = 2 * Math.PI * Math.random();
+  const r = 2.2 + (Math.random() - 0.5) * 0.28;
+  nodePos[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+  nodePos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+  nodePos[i*3+2] = r * Math.cos(phi);
+  const t = (nodePos[i*3+1] / r + 1) / 2;
+  nodeCol[i*3]   = t * 0.66;
+  nodeCol[i*3+1] = t * 0.33 + (1-t) * 0.9;
+  nodeCol[i*3+2] = 1.0;
+}
+const nodeBuf = new THREE.BufferGeometry();
+nodeBuf.setAttribute('position', new THREE.BufferAttribute(nodePos, 3));
+nodeBuf.setAttribute('color',    new THREE.BufferAttribute(nodeCol, 3));
+globeGroup.add(new THREE.Points(nodeBuf, new THREE.PointsMaterial({ size: 0.055, vertexColors: true, transparent: true, opacity: 0.9, sizeAttenuation: true })));
+
+// Connection lines
+const lineArr = [];
+const pts3 = [];
+for (let i = 0; i < NODE_COUNT; i++) pts3.push(new THREE.Vector3(nodePos[i*3], nodePos[i*3+1], nodePos[i*3+2]));
+for (let i = 0; i < NODE_COUNT; i++) {
+  for (let j = i+1; j < NODE_COUNT; j++) {
+    if (pts3[i].distanceTo(pts3[j]) < 1.0) {
+      lineArr.push(pts3[i].x, pts3[i].y, pts3[i].z, pts3[j].x, pts3[j].y, pts3[j].z);
+    }
+  }
+}
+const lineBuf = new THREE.BufferGeometry();
+lineBuf.setAttribute('position', new THREE.BufferAttribute(new Float32Array(lineArr), 3));
+globeGroup.add(new THREE.LineSegments(lineBuf, new THREE.LineBasicMaterial({ color: 0x00e5ff, transparent: true, opacity: 0.1 })));
+
+// Core glow
+globeGroup.add(Object.assign(new THREE.Mesh(new THREE.SphereGeometry(2.0,32,32), new THREE.MeshBasicMaterial({ color: 0x0a1a3a, transparent: true, opacity: 0.35, side: THREE.BackSide })), {}));
+
+// Orbit rings
+const ring1 = new THREE.Mesh(new THREE.TorusGeometry(2.26, 0.008, 8, 120), new THREE.MeshBasicMaterial({ color: 0x00e5ff, transparent: true, opacity: 0.28 }));
+ring1.rotation.x = Math.PI / 2; globeGroup.add(ring1);
+const ring2 = new THREE.Mesh(new THREE.TorusGeometry(2.26, 0.006, 8, 120), new THREE.MeshBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.18 }));
+ring2.rotation.set(Math.PI/3, 0.5, 0); globeGroup.add(ring2);
+
+// ── WEBSITE CARD TEXTURE ──
+function makeWebTexture() {
+  const c = document.createElement('canvas');
+  c.width = 256; c.height = 192;
+  const x = c.getContext('2d');
+  x.fillStyle = '#0a0e1a'; x.fillRect(0,0,256,192);
+  x.fillStyle = '#0d1628'; x.fillRect(0,0,256,24);
+  x.fillStyle = '#00e5ff'; x.fillRect(10,8,40,8);
+  for(let i=0;i<4;i++){x.fillStyle=`rgba(255,255,255,${0.2+i*.05})`;x.fillRect(180+i*17,9,12,5);}
+  x.fillStyle='rgba(0,229,255,0.08)';x.fillRect(10,34,160,48);
+  x.fillStyle='#fff';x.fillRect(14,40,100,8);x.fillRect(14,52,130,5);x.fillRect(14,60,80,5);
+  x.fillStyle='#00e5ff';x.fillRect(14,70,48,10);
+  x.fillStyle='rgba(168,85,247,0.3)';x.fillRect(180,30,66,60);
+  x.fillStyle='#a855f7';x.fillRect(185,35,56,3);x.fillRect(185,41,45,2);x.fillRect(185,46,50,2);
+  for(let i=0;i<3;i++){
+    x.fillStyle='rgba(255,255,255,0.06)';x.fillRect(10+i*82,92,76,28);
+    x.fillStyle='#fbbf24';x.fillRect(16+i*82,98,30,6);
+    x.fillStyle='rgba(255,255,255,0.3)';x.fillRect(16+i*82,108,50,4);
+  }
+  for(let i=0;i<3;i++){
+    x.fillStyle='rgba(0,229,255,0.05)';x.fillRect(10+i*82,130,76,50);
+    x.fillStyle=[`#00e5ff`,`#a855f7`,`#fbbf24`][i];x.fillRect(14+i*82,135,24,24);
+    x.fillStyle='rgba(255,255,255,0.5)';x.fillRect(44+i*82,135,38,5);x.fillRect(44+i*82,143,30,3);
+    x.fillStyle='rgba(0,229,255,0.15)';x.fillRect(14+i*82,162,68,12);
+  }
+  x.fillStyle='rgba(0,229,255,0.05)';x.fillRect(0,186,256,6);
+  return new THREE.CanvasTexture(c);
+}
+
+// ── Orbiting Website Screens ──
+const webTex = makeWebTexture();
+function makeScreen(radius, speed, offset, tilt) {
+  const g = new THREE.Group(); scene.add(g);
+  const body = new THREE.Mesh(new THREE.BoxGeometry(1.5,1.12,0.04), new THREE.MeshStandardMaterial({ color: 0x0d1628, emissive: 0x0a1020, metalness: 0.7, roughness: 0.2 }));
+  g.add(body);
+  const screen = new THREE.Mesh(new THREE.PlaneGeometry(1.44,1.06), new THREE.MeshBasicMaterial({ map: webTex }));
+  screen.position.z = 0.022; g.add(screen);
+  const glow = new THREE.Mesh(new THREE.PlaneGeometry(1.44,1.06), new THREE.MeshBasicMaterial({ color: 0x00e5ff, transparent: true, opacity: 0.05 }));
+  glow.position.z = 0.023; g.add(glow);
+  return { group: g, radius, speed, offset, tilt };
+}
+const screens = [
+  makeScreen(4.2, 0.28, 0, 0.4),
+  makeScreen(4.8, 0.20, 2.1, -0.3),
+  makeScreen(4.0, 0.34, 4.2, 0.2),
+];
+
+// ── Dollar Symbols ──
+function makeDollar(radius, speed, offset, tilt) {
+  const g = new THREE.Group(); g.scale.setScalar(0.4); scene.add(g);
+  const mat = new THREE.MeshStandardMaterial({ color: 0xfbbf24, emissive: 0x92400e, emissiveIntensity: 0.3, metalness: 0.95, roughness: 0.1 });
+  const matBright = new THREE.MeshStandardMaterial({ color: 0xfde68a, metalness: 1, roughness: 0.05 });
+  g.add(new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.5,0.15,32), mat));
+  const t1 = new THREE.Mesh(new THREE.TorusGeometry(0.22,0.06,8,24,Math.PI*1.5), matBright); t1.position.z=0.09; g.add(t1);
+  const t2 = new THREE.Mesh(new THREE.TorusGeometry(0.22,0.06,8,24,Math.PI*1.5), matBright); t2.position.z=0.09; t2.rotation.z=Math.PI; g.add(t2);
+  const bar = new THREE.Mesh(new THREE.BoxGeometry(0.08,0.7,0.08), matBright); bar.position.z=0.09; g.add(bar);
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(0.52,0.02,8,48), new THREE.MeshBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0.6 })); g.add(rim);
+  return { group: g, radius, speed, offset, tilt };
+}
+const dollars = [
+  makeDollar(3.8, 0.36, 1.0, 0.5),
+  makeDollar(4.6, 0.24, 3.5, -0.4),
+  makeDollar(5.0, 0.18, 5.8, 0.1),
+];
+
+// ── Ambient Particles ──
+const ambCount = 450;
+const ambPos = new Float32Array(ambCount * 3);
+for (let i = 0; i < ambCount; i++) {
+  ambPos[i*3]   = (Math.random()-.5)*26;
+  ambPos[i*3+1] = (Math.random()-.5)*15;
+  ambPos[i*3+2] = (Math.random()-.5)*13;
+}
+const ambBuf = new THREE.BufferGeometry();
+ambBuf.setAttribute('position', new THREE.BufferAttribute(ambPos, 3));
+const ambParticles = new THREE.Points(ambBuf, new THREE.PointsMaterial({ size: 0.024, color: 0xffffff, transparent: true, opacity: 0.22, sizeAttenuation: true }));
+scene.add(ambParticles);
+
+// ── Camera targets per section ──
+const camTargets = [
+  { pos: new THREE.Vector3(0, 1.5, 9),  look: new THREE.Vector3(0, 0, 0) },
+  { pos: new THREE.Vector3(2.8, -0.4, 5.0), look: new THREE.Vector3(1.2, 0, 0) },
+  { pos: new THREE.Vector3(0, 1.5, 9),  look: new THREE.Vector3(0, 0, 0) },
+];
+let camProgress = 0; // 0 = section 0, 1 = section 1, 2 = section 2
+const camLookTarget = new THREE.Vector3();
+const clock = new THREE.Clock();
+
+function animate3D() {
+  requestAnimationFrame(animate3D);
+  const elapsed = clock.getElapsedTime();
+  const delta = clock.getDelta ? 0.016 : 0.016;
+
+  // Globe rotation
+  globeGroup.rotation.y += 0.0007;
+  globeGroup.rotation.x += 0.0002;
+  ambParticles.rotation.y += 0.00005;
+
+  // Screens orbit
+  screens.forEach(s => {
+    const t = elapsed * s.speed + s.offset;
+    s.group.position.x = Math.cos(t) * s.radius;
+    s.group.position.y = Math.sin(t * 0.3) * 0.8 + s.tilt;
+    s.group.position.z = Math.sin(t) * s.radius;
+    s.group.rotation.y = -t + Math.PI / 6;
+  });
+
+  // Dollars orbit
+  dollars.forEach(d => {
+    const t = elapsed * d.speed + d.offset;
+    d.group.position.x = Math.cos(t + Math.PI) * d.radius;
+    d.group.position.y = Math.sin(t * 0.4) * 0.6 + d.tilt;
+    d.group.position.z = Math.sin(t + Math.PI) * d.radius;
+    d.group.rotation.y += 0.02;
+    d.group.rotation.x = Math.sin(elapsed * 0.3 + d.offset) * 0.3;
+  });
+
+  // Camera smooth interpolation
+  const targetIdx = Math.round(camProgress);
+  const clamped = Math.max(0, Math.min(2, camProgress));
+  const a = Math.floor(clamped), b = Math.min(2, a + 1);
+  const frac = clamped - a;
+  const ease = frac < 0.5 ? 2*frac*frac : -1+(4-2*frac)*frac;
+  const desiredPos = new THREE.Vector3().lerpVectors(camTargets[a].pos, camTargets[b].pos, ease);
+  const desiredLook = new THREE.Vector3().lerpVectors(camTargets[a].look, camTargets[b].look, ease);
+  camera.position.lerp(desiredPos, 0.035);
+  camLookTarget.lerp(desiredLook, 0.035);
+  camera.lookAt(camLookTarget);
+
+  renderer.render(scene, camera);
+}
+animate3D();
+
+// Resize
+window.addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+// ═══════════════════════════════════════════════
+// HORIZONTAL SCROLL SYSTEM
+// ═══════════════════════════════════════════════
+const track = document.getElementById('track');
+const prog  = document.getElementById('prog');
+const dots  = document.querySelectorAll('.dot');
+const hint  = document.getElementById('hint');
+const SECTIONS = 3;
+let currentSec = 0;
+let targetX = 0;
+let currentXPos = 0;
+let isScrollBlocked = false;
+
+function scrollTo(i) {
+  const idx = Math.max(0, Math.min(SECTIONS-1, i));
+  currentSec = idx;
+  targetX = idx * innerWidth;
+  camProgress = idx;
+  dots.forEach((d,j) => d.classList.toggle('active', j===idx));
+  if (idx > 0) hint.style.opacity = '0';
+  else hint.style.opacity = '1';
+  activatePanel(idx);
+}
+window.scrollTo = scrollTo; // expose for onclick
+
+function activatePanel(idx) {
+  document.querySelectorAll('[data-panel]').forEach(el => {
+    if (parseInt(el.dataset.panel) === idx) {
+      el.classList.add('vis');
+    } else {
+      el.classList.remove('vis');
+    }
+  });
+}
+
+// Lerp scroll
+function scrollLoop() {
+  currentXPos += (targetX - currentXPos) * 0.082;
+  if (Math.abs(targetX - currentXPos) < 0.2) currentXPos = targetX;
+  track.style.transform = `translateX(${-currentXPos}px)`;
+  const maxScroll = innerWidth * (SECTIONS - 1);
+  const p = currentXPos / maxScroll;
+  prog.style.width = (p * 100) + '%';
+  requestAnimationFrame(scrollLoop);
+}
+scrollLoop();
+
+// Wheel
+window.addEventListener('wheel', e => {
+  e.preventDefault();
+  if (isScrollBlocked) return;
+  isScrollBlocked = true;
+  scrollTo(currentSec + (e.deltaY > 0 ? 1 : -1));
+  setTimeout(() => { isScrollBlocked = false; }, 850);
+}, { passive: false });
+
+// Touch
+let tx0 = 0, ty0 = 0;
+window.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; ty0 = e.touches[0].clientY; }, { passive: true });
+window.addEventListener('touchend', e => {
+  const dx = tx0 - e.changedTouches[0].clientX;
+  const dy = ty0 - e.changedTouches[0].clientY;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) scrollTo(currentSec + (dx>0?1:-1));
+}, { passive: true });
+
+// Keyboard
+window.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') scrollTo(currentSec + 1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   scrollTo(currentSec - 1);
+});
+
+// Init panel 0
+activatePanel(0);
+
+// Form
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.fsub');
+  btn.textContent = '✓ Message Sent!';
+  btn.style.background = 'var(--cyan)';
+  setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; e.target.reset(); }, 3000);
+}
+window.handleForm = handleForm;
+</script>
+</body>
+</html>
