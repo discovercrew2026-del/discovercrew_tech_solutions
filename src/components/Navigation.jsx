@@ -24,10 +24,10 @@ export default function Navigation({ currentSec, scrollTo }) {
         <li><a className={currentSec === 2 ? 'active' : ''} onClick={() => handleNav(2)}>Products</a></li>
         <li><a className={currentSec === 3 ? 'active' : ''} onClick={() => handleNav(3)}>About</a></li>
         <li><a className={currentSec === 4 ? 'active' : ''} onClick={() => handleNav(4)}>Contact</a></li>
-        <li className="mobile-only"><button className="nav-cta" style={{ display: 'block', width: '100%' }} onClick={() => handleNav(4)}>Get Started</button></li>
+
       </ul>
       
-      <button className="nav-cta" onClick={() => handleNav(4)}>Get Started</button>
+
     </nav>
   );
 }
