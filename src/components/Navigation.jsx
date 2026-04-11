@@ -27,7 +27,7 @@ export default function Navigation({ currentSec, scrollTo }) {
 
       </ul>
       
-
+      <button className="nav-cta" onClick={() => handleNav(4)}>Get Started</button>
     </nav>
   );
 }
