@@ -84,7 +84,7 @@ export default function PanelProducts({ isActive }) {
                   rel="noopener noreferrer" 
                   className="product-cta"
                 >
-                  Launch Application &rarr;
+                  Open App &rarr;
                 </a>
               </div>
               
@@ -100,7 +100,7 @@ export default function PanelProducts({ isActive }) {
                     <span className="stag cyan">TICKETING</span>
                   </div>
                 </div>
-                <button className="product-cta">View Live Demo &rarr;</button>
+                <button className="product-cta" disabled style={{opacity: 0.5, cursor: 'not-allowed'}}>🚧 Under Development</button>
               </div>
             </div>
           </div>
