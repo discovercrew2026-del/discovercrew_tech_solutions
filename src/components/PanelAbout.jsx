@@ -8,8 +8,8 @@ export default function PanelAbout({ isActive }) {
 
   const team = [
     { name: 'Aravinth', role: 'CYBER TECH & CO-FOUNDER', img: '/T1.jpg' },
-    { name: 'Tharun', role: 'DIGITAL MARKETING & CO-FOUNDER', img: '/T2.jpg' },
     { name: 'Rohith', role: 'FULL STACK DEVELOPER & FOUNDER', img: '/T3.png' },
+    { name: 'Tharun', role: 'DIGITAL MARKETING & CO-FOUNDER', img: '/T2.jpg' },
   ];
 
   const handleScroll = () => {
