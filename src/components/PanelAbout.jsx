@@ -8,7 +8,7 @@ export default function PanelAbout({ isActive }) {
 
   const team = [
     { name: 'Aravinth', role: 'CYBER TECH & CO-FOUNDER', img: '/T1.jpg' },
-    { name: 'Rohith', role: 'FULL STACK DEVELOPER & FOUNDER', img: '/T3.png' },
+    { name: 'Rohith', role: 'FULL STACK DEVELOPER & FOUNDER', img: '/Paul New.png' },
     { name: 'Tharun', role: 'DIGITAL MARKETING & CO-FOUNDER', img: '/T2.jpg' },
   ];
 
@@ -102,7 +102,11 @@ export default function PanelAbout({ isActive }) {
                 {team.map((member, i) => (
                   <div key={i} className="team-col-item">
                     <div className="team-col-img">
-                      <img src={member.img} alt={member.name} />
+                      <img 
+                        src={member.img} 
+                        alt={member.name}
+                        style={member.name === 'Rohith' ? { objectPosition: 'center 30%' } : {}}
+                      />
                     </div>
                     <div className="team-col-overlay"></div>
                     <div className="team-col-info">
