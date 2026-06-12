@@ -121,18 +121,7 @@ export default function PanelAbout({ isActive }) {
                   ))}
                 </div>
 
-                {/* Bottom Movie Poster Title & Subtitles */}
-                <div className="spanning-brand-container">
-                  <div className="spanning-brand-title">DISCOVER CREW</div>
-                  <div className="spanning-brand-subtitle">
-                    BUILDING THE FOUNDATIONAL SYSTEMS FOR NEXT-GEN DIGITAL INTELLIGENCE
-                  </div>
-                  <div className="spanning-team-names-row">
-                    {team.map((member, i) => (
-                      <span key={i} className="spanning-team-name-item">{member.name}</span>
-                    ))}
-                  </div>
-                </div>
+
               </div>
             </div>
 

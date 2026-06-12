@@ -12,7 +12,7 @@ export default function Navigation({ currentSec, scrollTo }) {
 
   return (
     <nav className="nav">
-      <div className="nav-logo" onClick={() => handleNav(0)}>Discover<span>Crew</span></div>
+      <div className="nav-logo" onClick={() => handleNav(0)}>DiscoverCrew<span>Technologies</span></div>
 
       <div className={`burger ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
         <span></span>
