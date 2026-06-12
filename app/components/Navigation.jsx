@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 export default function Navigation({ currentSec, scrollTo }) {
@@ -11,7 +13,7 @@ export default function Navigation({ currentSec, scrollTo }) {
   return (
     <nav className="nav">
       <div className="nav-logo" onClick={() => handleNav(0)}>Discover<span>Crew</span></div>
-      
+
       <div className={`burger ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
         <span></span>
         <span></span>
@@ -24,9 +26,8 @@ export default function Navigation({ currentSec, scrollTo }) {
         <li><a className={currentSec === 2 ? 'active' : ''} onClick={() => handleNav(2)}>Products</a></li>
         <li><a className={currentSec === 3 ? 'active' : ''} onClick={() => handleNav(3)}>About</a></li>
         <li><a className={currentSec === 4 ? 'active' : ''} onClick={() => handleNav(4)}>Contact</a></li>
-
       </ul>
-      
+
       <button className="nav-cta" onClick={() => handleNav(4)}>Get Started</button>
     </nav>
   );
