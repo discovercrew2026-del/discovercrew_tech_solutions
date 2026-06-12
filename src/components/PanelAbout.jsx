@@ -9,7 +9,8 @@ export default function PanelAbout({ isActive }) {
   const team = [
     { name: 'Aravinth', role: 'CYBER TECH & CO-FOUNDER', img: '/T1.jpg' },
     { name: 'Rohith', role: 'FULL STACK DEVELOPER & FOUNDER', img: '/Paul New.png' },
-    { name: 'Tharun', role: 'DIGITAL MARKETING & CO-FOUNDER', img: '/T2.jpg' },
+    { name: 'Tharun', role: 'AI ENGINEER & CO-FOUNDER', img: '/T2.jpg' },
+    { name: 'Gowtham', role: 'DIGITAL MARKETING & CO-FOUNDER', img: '/T4.png' },
   ];
 
   const handleScroll = () => {
@@ -98,23 +99,38 @@ export default function PanelAbout({ isActive }) {
                 </div>
               </div>
 
-              <div className={`team-columns fade-right d2 ${isActive ? 'vis' : ''}`}>
-                {team.map((member, i) => (
-                  <div key={i} className="team-col-item">
-                    <div className="team-col-img">
-                      <img 
-                        src={member.img} 
-                        alt={member.name}
-                        style={member.name === 'Rohith' ? { objectPosition: 'center 30%' } : {}}
-                      />
+              <div className={`team-columns-wrapper fade-right d2 ${isActive ? 'vis' : ''}`}>
+                <div className="team-columns">
+                  {team.map((member, i) => (
+                    <div key={i} className="team-col-item">
+                      <div className="team-col-img">
+                        <img 
+                          src={member.img} 
+                          alt={member.name}
+                          style={member.name === 'Rohith' ? { objectPosition: 'center 30%' } : {}}
+                        />
+                      </div>
+                      <div className="team-col-overlay"></div>
+                      <div className="team-col-info">
+                        <p className="col-role">{member.role}</p>
+                        <p className="col-name">{member.name}</p>
+                      </div>
                     </div>
-                    <div className="team-col-overlay"></div>
-                    <div className="team-col-info">
-                      <p className="col-role">{member.role}</p>
-                      <p className="col-name">{member.name}</p>
-                    </div>
+                  ))}
+                </div>
+
+                {/* Bottom Movie Poster Title & Subtitles */}
+                <div className="spanning-brand-container">
+                  <div className="spanning-brand-title">DISCOVER CREW</div>
+                  <div className="spanning-brand-subtitle">
+                    BUILDING THE FOUNDATIONAL SYSTEMS FOR NEXT-GEN DIGITAL INTELLIGENCE
                   </div>
-                ))}
+                  <div className="spanning-team-names-row">
+                    {team.map((member, i) => (
+                      <span key={i} className="spanning-team-name-item">{member.name}</span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 

@@ -138,24 +138,129 @@ canvas{display:block;}
 .stat-val{font-family:var(--ff-display);font-size:2rem;font-weight:700;color:var(--white);letter-spacing:-0.5px;}
 .stat-lab{font-size:.7rem;font-weight:700;color:var(--w50);text-transform:uppercase;letter-spacing:.12em;}
 
-.team-columns{flex:1;display:flex;gap:4px;height:100vh;padding-right:48px;}
+.team-columns-wrapper {
+  flex: 1.3;
+  position: relative;
+  height: 100vh;
+  padding-right: 48px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.team-columns{flex:1;display:flex;gap:4px;height:100%;}
 .team-col-item{flex:1;position:relative;border-radius:0;overflow:hidden;background:rgba(255,255,255,0.02);border:none;transition:flex 0.5s cubic-bezier(0.16,1,0.3,1);}
-.team-col-item:hover{flex:1.6;}
+.team-col-item:hover{flex:1.5;}
 
 .team-col-img{position:absolute;inset:-10px;z-index:0;}
-.team-col-img img{width:calc(100% + 20px);height:calc(100% + 20px);object-fit:cover;filter:grayscale(100%) contrast(1.1);transition:filter 0.5s, transform 0.8s;}
-.team-col-item:hover .team-col-img img{filter:grayscale(0%) contrast(1); transform:scale(1.02);}
+.team-col-img img{width:calc(100% + 20px);height:calc(100% + 20px);object-fit:cover;filter:grayscale(100%) contrast(1.15);transition:filter 0.5s, transform 0.8s;}
+.team-col-item:hover .team-col-img img{filter:grayscale(0%) contrast(1.05); transform:scale(1.03);}
 
-.team-col-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(5,8,17,0.95) 0%, rgba(5,8,17,0.4) 40%, transparent 70%);z-index:1;transition:opacity 0.4s;}
+.team-col-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(5,8,17,0.98) 0%, rgba(5,8,17,0.35) 45%, transparent 75%);z-index:1;transition:opacity 0.4s;}
 .team-col-item:hover .team-col-overlay{opacity:0.8;}
-.team-col-info{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 1.8rem;z-index:2;transform:translateY(10px);transition:transform 0.4s;}
-.team-col-item:hover .team-col-info{transform:translateY(0);}
-.col-role{font-size:.65rem;font-weight:700;color:var(--w50);text-transform:uppercase;letter-spacing:.15em;margin-bottom:8px;}
+.team-col-info{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 1.8rem;z-index:2;transform:translateY(10px);transition:transform 0.4s;opacity: 0;visibility: hidden;}
+.team-col-item:hover .team-col-info{transform:translateY(0);opacity: 1;visibility: visible;}
+.col-role{font-size:.65rem;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:.15em;margin-bottom:8px;}
 .col-name{font-family:var(--ff-display);font-size:1.4rem;font-weight:700;color:var(--white);line-height:1.2;}
+
+/* Spanning Typography Overlays (Los Adioses style) */
+.spanning-text-overlay {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: var(--ff-display);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 800;
+  text-transform: uppercase;
+  z-index: 5;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  transition: color 0.3s, opacity 0.3s;
+}
+
+.spanning-row-1 {
+  top: 15%;
+  font-size: clamp(1rem, 2vw, 2.5rem);
+  letter-spacing: 2em;
+  padding-left: 2em;
+}
+
+.spanning-row-2 {
+  top: 42%;
+  font-size: clamp(1.1rem, 2.3vw, 2.8rem);
+  letter-spacing: 1.8em;
+  padding-left: 1.8em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.spanning-row-3 {
+  top: 65%;
+  font-size: clamp(1rem, 2vw, 2.3rem);
+  letter-spacing: 2.2em;
+  padding-left: 2.2em;
+}
+
+/* Bottom brand movie poster text styles */
+.spanning-brand-container {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.spanning-brand-title {
+  font-family: var(--ff-display);
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  font-weight: 800;
+  color: #ec4899; /* Los Adioses pink */
+  letter-spacing: 0.6em;
+  padding-left: 0.6em;
+  line-height: 1;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.spanning-brand-subtitle {
+  font-size: clamp(0.45rem, 0.7vw, 0.65rem);
+  font-weight: 600;
+  color: var(--w50);
+  letter-spacing: 0.35em;
+  padding-left: 0.35em;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 12px;
+  max-width: 85%;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.spanning-team-names-row {
+  display: flex;
+  width: 100%;
+  margin-top: 6px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--w80);
+}
+
+.spanning-team-name-item {
+  flex: 1;
+  font-size: clamp(0.55rem, 0.8vw, 0.75rem);
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
 
 @media (max-width: 1200px) {
   .about-architectural{flex-direction:column;gap:4rem;}
-  .team-columns{height:500px;}
+  .team-columns-wrapper{height:550px; padding-right:0; margin-bottom: 2rem;}
+  .team-columns{height:100%;}
 }
 @media (max-width: 768px) {
   .stats-row{flex-direction:column;gap:2rem;}
@@ -554,6 +659,11 @@ canvas{display:block;}
     gap: 1.5rem;
     padding-top: 1.5rem;
   }
+  .team-columns-wrapper {
+    height: auto;
+    padding-right: 0;
+    overflow: visible;
+  }
   .team-columns {
     flex-direction: column;
     height: auto;
@@ -566,8 +676,10 @@ canvas{display:block;}
     border-radius: 12px;
   }
   .team-col-item:hover { flex: none; transform: none; }
-  .team-col-info { padding: 1.5rem; }
+  .team-col-info { padding: 1.5rem; opacity: 1; visibility: visible; transform: none; }
   .col-name { font-size: 1.1rem; }
+  .spanning-text-overlay { display: none; }
+  .spanning-brand-container { display: none; }
 }
 
 /* ── Contact Panel ── */
