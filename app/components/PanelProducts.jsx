@@ -71,7 +71,7 @@ export default function PanelProducts({ isActive }) {
               <div className={`product-card fade-up d1 ${isActive ? 'vis' : ''}`} data-panel="2">
                 <div className="product-info">
                   <div className="product-tagline">PLATFORM</div>
-                  <div className="product-name">⚡ Ventura AI</div>
+                  <h3 className="product-name">⚡ Ventura AI</h3>
                   <div className="product-desc">
                     Ventura AI is an all-in-one AI platform that helps businesses automate tasks, manage leads, generate content, and get smart insights — all from one premium dashboard.
                   </div>
@@ -93,7 +93,7 @@ export default function PanelProducts({ isActive }) {
               <div className={`product-card fade-up d2 ${isActive ? 'vis' : ''}`} data-panel="2">
                 <div className="product-info">
                   <div className="product-tagline">MANAGEMENT</div>
-                  <div className="product-name acc">🗓️ Event OS</div>
+                  <h3 className="product-name acc">🗓️ Event OS</h3>
                   <div className="product-desc">
                     A complete event management platform for organizers. Create events, sell tickets, manage registrations, track attendance, and coordinate your team — all in one unified place.
                   </div>

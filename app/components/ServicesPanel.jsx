@@ -89,7 +89,7 @@ export default function ServicesPanel({ isActive }) {
               {services.map((s, idx) => (
                 <div key={s.id} id={`scard-${s.id}`} className={`scard ${s.color} fade-up d${Math.min(idx + 1, 6)} ${isActive ? 'vis' : ''}`}>
                   <div className={`sicon ${s.color}`}>{s.icon}</div>
-                  <div className="stitle">{s.title}</div>
+                  <h3 className="stitle">{s.title}</h3>
                   <div className="sdesc">{s.desc}</div>
                   <span className={`stag ${s.color}`}>{s.tag}</span>
                 </div>

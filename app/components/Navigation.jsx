@@ -21,11 +21,66 @@ export default function Navigation({ currentSec, scrollTo }) {
       </div>
 
       <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-        <li><a className={currentSec === 0 ? 'active' : ''} onClick={() => handleNav(0)}>Home</a></li>
-        <li><a className={currentSec === 1 ? 'active' : ''} onClick={() => handleNav(1)}>Services</a></li>
-        <li><a className={currentSec === 2 ? 'active' : ''} onClick={() => handleNav(2)}>Products</a></li>
-        <li><a className={currentSec === 3 ? 'active' : ''} onClick={() => handleNav(3)}>About</a></li>
-        <li><a className={currentSec === 4 ? 'active' : ''} onClick={() => handleNav(4)}>Contact</a></li>
+        <li>
+          <a
+            href="#home"
+            className={currentSec === 0 ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav(0);
+            }}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="#services"
+            className={currentSec === 1 ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav(1);
+            }}
+          >
+            Services
+          </a>
+        </li>
+        <li>
+          <a
+            href="#products"
+            className={currentSec === 2 ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav(2);
+            }}
+          >
+            Products
+          </a>
+        </li>
+        <li>
+          <a
+            href="#about"
+            className={currentSec === 3 ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav(3);
+            }}
+          >
+            About
+          </a>
+        </li>
+        <li>
+          <a
+            href="#contact"
+            className={currentSec === 4 ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav(4);
+            }}
+          >
+            Contact
+          </a>
+        </li>
       </ul>
 
       <button className="nav-cta" onClick={() => handleNav(4)}>Get Started</button>
