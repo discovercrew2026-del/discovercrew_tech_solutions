@@ -61,24 +61,48 @@ This document records the full-spectrum audit and implementation fixes performed
 - **Fix Implemented**: Added explicit `<label>` tags and `aria-label` attributes to form fields, search links, and buttons. Updated social links to real company profiles.
 - **Files Modified**: `app/components/ContactPanel.jsx`, `app/components/Navigation.jsx`.
 
+### Issue 7: WWW to Non-WWW Canonical Domain Redirect
+- **Severity**: Critical (Duplicate Content / SEO Split Penalty)
+- **Previous State**: Website was accessible through both `https://discovercrewtechnologies.com/` and `https://www.discovercrewtechnologies.com/` without server-level redirect, splitting page rank and causing potential duplicate content indexing.
+- **Canonical Domain Established**: `https://discovercrewtechnologies.com/`
+- **Fix Implemented**: Configured server & CDN edge level permanent 301/308 redirects in `next.config.mjs` and `vercel.json`. Any request to `www.discovercrewtechnologies.com/:path*` permanently redirects to `https://discovercrewtechnologies.com/:path*` while preserving full URI path and query parameters.
+- **Deployment Platform**: Vercel Edge Network.
+- **Files Modified/Created**: `next.config.mjs`, `vercel.json`, `.env.example`.
+
 ---
 
 ## 3. SEO Verification Audit Checklist
 
 - [x] **Single H1 per page**: Verified across Home and all 12 sub-pages.
 - [x] **Unique SEO Titles & Meta Descriptions**: Verified on every route.
-- [x] **Canonical URLs**: Declared on root layout and individual sub-pages.
-- [x] **XML Sitemap & Robots.txt**: `app/sitemap.js` dynamically generates all 13 canonical URLs; `app/robots.js` allows crawling and points to sitemap.
-- [x] **Structured Data Syntax**: Valid JSON-LD for Organization, Service, and SoftwareApplication entities.
-- [x] **Internal Linking**: Clean semantic anchor links (`/services/web-development`, `/products/ventura-ai`, etc.) with descriptive text.
+- [x] **Canonical Domain & Tags**: Enforced non-www `https://discovercrewtechnologies.com/` across all `canonical` tags, `metadataBase`, OG `og:url`, and JSON-LD schemas (`Organization`, `WebSite`, `Service`, `SoftwareApplication`).
+- [x] **Server/Edge Level 301 Redirect**: Verified `www.discovercrewtechnologies.com` permanently redirects to `https://discovercrewtechnologies.com/` with 301/308 header and path preservation.
+- [x] **XML Sitemap & Robots.txt**: `app/sitemap.js` dynamically generates all 13 non-www canonical URLs; `app/robots.js` allows crawling and points strictly to `https://discovercrewtechnologies.com/sitemap.xml`.
+- [x] **Structured Data Syntax**: Valid JSON-LD for Organization, WebSite, Service, and SoftwareApplication entities using non-www domain.
+- [x] **Internal Linking & Zero www Audit**: Grep code search confirmed zero accidental `www` URLs in codebase, metadata, or sitemaps.
 - [x] **E-E-A-T Compliance**: Zero fake statistics or fabricated testimonials. Factual founder and capability disclosures.
 - [x] **Mobile Responsiveness & CSS**: Sub-page styling container supporting clean vertical scrolling on mobile and desktop viewports.
 
 ---
 
-## 4. Expected SEO Impact
+## 4. Live Redirect Verification Test Results
 
-1. **Google Indexing**: All 13 canonical URLs will be indexed cleanly without 404 errors.
-2. **Google AI Overview / Semantic Search**: Concise definitions of Discover Crew Technologies clear ambiguity for AI answer engines.
-3. **Organic Search Rankings**: High relevance for queries like *"custom software development company"*, *"AI automation services"*, and *"Ventura AI"*.
-4. **User Trust & Conversion**: Direct business copy and real founder background build confidence, raising inquiry conversion rates.
+| Requested URL | HTTP Response | Location / Result |
+|---|---|---|
+| `https://discovercrewtechnologies.com/` | `HTTP 200 OK` | Target Canonical Page |
+| `https://www.discovercrewtechnologies.com/` | `HTTP 308 Permanent Redirect` | `https://discovercrewtechnologies.com/` |
+| `https://www.discovercrewtechnologies.com/about` | `HTTP 308 Permanent Redirect` | `https://discovercrewtechnologies.com/about` |
+| `https://www.discovercrewtechnologies.com/products` | `HTTP 308 Permanent Redirect` | `https://discovercrewtechnologies.com/products` |
+| `http://discovercrewtechnologies.com/` | `HTTP 308 Permanent Redirect` | `https://discovercrewtechnologies.com/` |
+| `http://www.discovercrewtechnologies.com/` | `HTTP 308 Permanent Redirect` | `https://discovercrewtechnologies.com/` |
+
+---
+
+## 5. Expected SEO Impact
+
+1. **Elimination of Duplicate Content**: All link equity, PageRank, and crawl budget consolidated strictly under `https://discovercrewtechnologies.com/`.
+2. **Google Indexing**: All 13 canonical URLs will be indexed cleanly without 404 errors or split domain canonicals.
+3. **Google AI Overview / Semantic Search**: Concise definitions of Discover Crew Technologies clear ambiguity for AI answer engines.
+4. **Organic Search Rankings**: High relevance for queries like *"custom software development company"*, *"AI automation services"*, and *"Ventura AI"*.
+5. **User Trust & Conversion**: Direct business copy and real founder background build confidence, raising inquiry conversion rates.
+
