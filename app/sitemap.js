@@ -3,21 +3,25 @@ export default async function sitemap() {
   
   const routes = [
     '',
-    '/about',
-    '/contact',
+    '/services',
     '/services/web-development',
     '/services/mobile-development',
-    '/services/digital-marketing',
-    '/services/ai-automation',
     '/services/software-development',
-    '/services/saas-platform',
+    '/services/ai-automation',
+    '/services/saas-development',
+    '/services/digital-marketing',
+    '/products',
     '/products/ventura-ai',
+    '/products/event-os',
+    '/about',
+    '/contact',
   ];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
-    changeFrequency: 'weekly',
-    priority: route === '' ? 1.0 : 0.8,
+    changeFrequency: route === '' ? 'daily' : 'weekly',
+    priority: route === '' ? 1.0 : route.startsWith('/services/') || route.startsWith('/products/') ? 0.8 : 0.7,
   }));
 }
+

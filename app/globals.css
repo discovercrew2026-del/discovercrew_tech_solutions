@@ -7,7 +7,7 @@
   --white:#fff;--w80:rgba(255,255,255,0.8);--w50:rgba(255,255,255,0.5);
   --w20:rgba(255,255,255,0.2);--w08:rgba(255,255,255,0.08);--w05:rgba(255,255,255,0.05);
   --glass-border:rgba(255,255,255,0.1);
-  --ff-display:'Syne',sans-serif;--ff-body:'DM Sans',sans-serif;
+  --ff-display:var(--font-syne), 'Syne', sans-serif;--ff-body:var(--font-dm-sans), 'DM Sans', sans-serif;
   --blue:#3b82f6;--blue-dim:rgba(59,130,246,0.12);
   --pink:#ec4899;--pink-dim:rgba(236,72,153,0.12);
   --indigo:#6366f1;--indigo-dim:rgba(99,102,241,0.12);
@@ -716,4 +716,128 @@ canvas{display:block;}
     padding: 0.85rem;
   }
 }
+
+/* ── SUBPAGE STYLING SYSTEM ── */
+.subpage-container {
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 10;
+  padding-top: 5rem;
+  background: var(--bg-deep);
+  color: var(--white);
+  scrollbar-width: thin;
+}
+
+.subpage-hero {
+  padding: 4rem 8% 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subpage-h1 {
+  font-family: var(--ff-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 1.2rem;
+}
+
+.subpage-lead {
+  font-size: 1.15rem;
+  color: var(--w80);
+  line-height: 1.8;
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+.subpage-section {
+  padding: 3rem 8%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subpage-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.subpage-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.subpage-card {
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(10, 15, 30, 0.6);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+}
+
+.subpage-faq-item {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1rem;
+}
+
+.subpage-footer {
+  border-top: 1px solid var(--w08);
+  padding: 3rem 8%;
+  margin-top: 4rem;
+  text-align: center;
+  color: var(--w50);
+  font-size: 0.85rem;
+}
+
+/* ── SUBPAGE MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  .subpage-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .subpage-hero {
+    padding: 2.5rem 5% 2rem;
+  }
+
+  .subpage-h1 {
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
+    letter-spacing: -0.8px;
+    margin-bottom: 1rem;
+  }
+
+  .subpage-lead {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .subpage-section {
+    padding: 2rem 5%;
+  }
+
+  .subpage-grid-2,
+  .subpage-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .subpage-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .subpage-footer {
+    padding: 2rem 5%;
+    margin-top: 2rem;
+  }
+}
+
 

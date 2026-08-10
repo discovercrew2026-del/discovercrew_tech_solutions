@@ -1,14 +1,15 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const services = [
-  { id: 'web', title: 'Web Development', icon: '⚡', color: 'cyan', tag: 'FULL STACK', desc: 'Blazing-fast, pixel-perfect web applications built with modern frameworks. From landing pages to enterprise SaaS.' },
-  { id: 'mobile', title: 'Mobile Development', icon: '📱', color: 'blue', tag: 'IOS & ANDROID', desc: 'Turn your idea into a powerful mobile experience. We design and develop native and cross-platform apps for iOS and Android — intuitive interfaces and smooth performance.' },
-  { id: 'marketing', title: 'Digital Marketing', icon: '🎯', color: 'purple', tag: 'GROWTH', desc: 'Visibility without strategy is just noise. We run targeted SEO, paid ad campaigns, content marketing, and social media that bring in real leads.' },
-  { id: 'ai', title: 'AI & Automation', icon: '🤖', color: 'gold', tag: 'AI-POWERED', desc: 'Work smarter, not harder. We integrate AI into your business to automate repetitive workflows and personalise customer experiences.' },
-  { id: 'software', title: 'Software Dev', icon: '💻', color: 'indigo', tag: 'CUSTOM BUILT', desc: 'Off-the-shelf software holds your business back. We build fully custom software solutions — internal tools, APIs, and dashboards.' },
-  { id: 'saas', title: 'SaaS Platform', icon: '☁️', color: 'teal', tag: 'CLOUD-BASED', desc: 'Build your own software product and make it a business. We develop end-to-end SaaS platforms — multi-tenant architecture and subscription billing.' }
+  { id: 'web', slug: 'web-development', title: 'Web Development', icon: '⚡', color: 'cyan', tag: 'FULL STACK', desc: 'Fast, secure, responsive web applications built with Next.js, React, and modern web frameworks. Built for performance and conversion.' },
+  { id: 'mobile', slug: 'mobile-development', title: 'Mobile Development', icon: '📱', color: 'blue', tag: 'IOS & ANDROID', desc: 'Cross-platform and native mobile apps for iOS and Android. High-performance mobile experiences engineered for seamless user interaction.' },
+  { id: 'marketing', slug: 'digital-marketing', title: 'Digital Marketing', icon: '🎯', color: 'purple', tag: 'GROWTH', desc: 'Data-driven SEO, targeted digital campaigns, content strategy, and conversion optimization to drive verified business growth.' },
+  { id: 'ai', slug: 'ai-automation', title: 'AI & Automation', icon: '🤖', color: 'gold', tag: 'AI-POWERED', desc: 'Custom AI integrations and business process automation to eliminate repetitive tasks, optimize workflows, and enhance operational speed.' },
+  { id: 'software', slug: 'software-development', title: 'Software Development', icon: '💻', color: 'indigo', tag: 'CUSTOM BUILT', desc: 'Tailored software solutions engineered for specific business challenges — including custom dashboards, internal tools, and robust APIs.' },
+  { id: 'saas', slug: 'saas-development', title: 'SaaS Development', icon: '☁️', color: 'teal', tag: 'CLOUD-BASED', desc: 'End-to-end SaaS application engineering with multi-tenant architecture, automated subscription management, and enterprise-grade security.' }
 ];
 
 export default function ServicesPanel({ isActive }) {
@@ -74,7 +75,12 @@ export default function ServicesPanel({ isActive }) {
         <div className={`services-header glass fade-left ${isActive ? 'vis' : ''}`}>
           <div className="eyebrow"><span className="eyebrow-dot"></span>WHAT WE DO</div>
           <h2 className="section-h2">Our <span className="acc">Services</span></h2>
-          <p className="section-sub">We design and develop high-performance websites and web applications that combine stunning visuals with rock-solid engineering. From business platforms to custom AI solutions — we build with modern frameworks like React and Next.js.</p>
+          <p className="section-sub">We engineer web applications, mobile software, custom business tools, AI automation workflows, and SaaS platforms that solve real operational challenges for growing companies.</p>
+          <div style={{ marginTop: '1.5rem' }}>
+            <Link href="/services" className="btn-ghost" style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem' }}>
+              View All Services &rarr;
+            </Link>
+          </div>
         </div>
         <div className={`services-grid-wrapper fade-up d2 ${isActive ? 'vis' : ''}`}>
           <div className="services-sub-nav">
@@ -91,7 +97,12 @@ export default function ServicesPanel({ isActive }) {
                   <div className={`sicon ${s.color}`}>{s.icon}</div>
                   <h3 className="stitle">{s.title}</h3>
                   <div className="sdesc">{s.desc}</div>
-                  <span className={`stag ${s.color}`}>{s.tag}</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '0.5rem' }}>
+                    <span className={`stag ${s.color}`}>{s.tag}</span>
+                    <Link href={`/services/${s.slug}`} className="service-detail-link" style={{ fontSize: '0.8rem', color: 'var(--cyan)', textDecoration: 'none', fontWeight: 600 }}>
+                      View Details &rarr;
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
@@ -104,3 +115,4 @@ export default function ServicesPanel({ isActive }) {
     </div>
   );
 }
+

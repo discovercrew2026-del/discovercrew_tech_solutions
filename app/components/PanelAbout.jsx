@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function PanelAbout({ isActive }) {
   const scrollRef = useRef(null);
@@ -9,9 +10,8 @@ export default function PanelAbout({ isActive }) {
   const [isDragging, setIsDragging] = useState(false);
 
   const team = [
-    { name: 'Aravinth', role: 'CYBER TECH & CO-FOUNDER', img: '/T1.jpg' },
     { name: 'Rohith', role: 'FULL STACK DEVELOPER & FOUNDER', img: '/Paul New.png' },
-    { name: 'Tharun', role: 'AI ENGINEER & CO-FOUNDER', img: '/T2.jpg' },
+    { name: 'Aravinth', role: 'CYBER TECH & CO-FOUNDER', img: '/T1.jpg' },
     { name: 'Gowtham', role: 'DIGITAL MARKETING & CO-FOUNDER', img: '/T4.png' },
   ];
 
@@ -68,35 +68,34 @@ export default function PanelAbout({ isActive }) {
             <div className="about-architectural">
               <div className={`about-left-content fade-left ${isActive ? 'vis' : ''}`}>
                 <div className="eyebrow">
-                  <span className="eyebrow-dot"></span> ARCHITECTURAL INTEGRITY
+                  <span className="eyebrow-dot"></span> ABOUT DISCOVER CREW
                 </div>
                 <h2 className="about-h2-large">
-                  The Discover Crew:<br />
-                  <span className="acc">Building the Digital Future.</span>
+                  Engineering Software<br />
+                  <span className="acc">Built for Growth.</span>
                 </h2>
                 <p className="about-desc-p">
-                  We engineer the foundational systems that power the next century of digital evolution. 
-                  Discover Crew is not just a software firm; we are the architects of the silent 
-                  protocols that sustain global connectivity and decentralized intelligence.
+                  Discover Crew Technologies is a software company focused on building custom web applications, mobile apps, AI automation, and SaaS products for businesses.
+                  Our goal is simple: understand your business challenge, design the right solution, build it cleanly, and support your growth.
                 </p>
                 
                 <div className="about-actions">
-                  <button className="btn-white">View Documentation</button>
-                  <button className="btn-outline">Contact Sales</button>
+                  <Link href="/about" className="btn-white" style={{ textDecoration: 'none' }}>Read Our Story</Link>
+                  <Link href="/contact" className="btn-outline" style={{ textDecoration: 'none' }}>Get in Touch</Link>
                 </div>
 
                 <div className="stats-row">
                   <div className="stat-item">
-                    <span className="stat-val">99.9%</span>
-                    <span className="stat-lab">Uptime SLA</span>
+                    <span className="stat-val" style={{ fontSize: '1.2rem', color: 'var(--cyan)' }}>Modern Web</span>
+                    <span className="stat-lab">Next.js & React</span>
                   </div>
                   <div className="stat-item">
-                    <span className="stat-val">2.4PB</span>
-                    <span className="stat-lab">Data Processed</span>
+                    <span className="stat-val" style={{ fontSize: '1.2rem', color: 'var(--purple)' }}>AI Integrations</span>
+                    <span className="stat-lab">Automated Workflows</span>
                   </div>
                   <div className="stat-item">
-                    <span className="stat-val">12ms</span>
-                    <span className="stat-lab">Global Latency</span>
+                    <span className="stat-val" style={{ fontSize: '1.2rem', color: 'var(--gold)' }}>Custom SaaS</span>
+                    <span className="stat-lab">Ventura AI & Event OS</span>
                   </div>
                 </div>
               </div>
@@ -108,8 +107,8 @@ export default function PanelAbout({ isActive }) {
                       <div className="team-col-img">
                         <img 
                           src={member.img} 
-                          alt={member.name}
-                          style={member.name === 'Rohith' ? { objectPosition: 'center 30%' } : {}}
+                          alt={`${member.name} - ${member.role} at Discover Crew Technologies`}
+                          style={{ objectPosition: 'center top' }}
                         />
                       </div>
                       <div className="team-col-overlay"></div>
@@ -120,8 +119,6 @@ export default function PanelAbout({ isActive }) {
                     </div>
                   ))}
                 </div>
-
-
               </div>
             </div>
 
@@ -145,3 +142,4 @@ export default function PanelAbout({ isActive }) {
     </div>
   );
 }
+

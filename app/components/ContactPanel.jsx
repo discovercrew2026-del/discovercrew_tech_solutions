@@ -55,7 +55,7 @@ export default function ContactPanel({ isActive }) {
       }
       
       setBtnText('✓ Message Sent!');
-      setBtnStyle({ background: 'var(--cyan)' });
+      setBtnStyle({ background: 'var(--cyan)', color: '#050811' });
       setTimeout(() => {
         setBtnText('Send Message →');
         setBtnStyle({});
@@ -77,50 +77,79 @@ export default function ContactPanel({ isActive }) {
       <div className="contact-content">
         <div className="testimonials-col">
           <div className={`fade-left ${isActive ? 'vis' : ''}`} data-panel="4">
-            <p className="section-label">Client Stories</p>
-            <h2 className="section-h2" style={{ marginBottom: '1.2rem' }}>What They Say</h2>
+            <p className="section-label">OUR APPROACH</p>
+            <h2 className="section-h2" style={{ marginBottom: '1.2rem' }}>How We Work</h2>
           </div>
           <div className={`tcard fade-left d2 ${isActive ? 'vis' : ''}`} data-panel="4">
-            <div className="stars">★★★★★</div>
-            <p className="ttext">"Discover Crew transformed our entire digital presence. Their AI automation saved us 30+ hours a week and the ROI was visible within the first month."</p>
+            <div className="stars" style={{ color: 'var(--cyan)', fontWeight: 700 }}>01. CONSULTATION & ARCHITECTURE</div>
+            <p className="ttext">"We start by dissecting your exact business goals, technical requirements, and target audience to design a scalable architecture before writing any code."</p>
             <div className="tauthor">
-              <div className="tavatar cyan">AM</div>
-              <div><div className="tname">Arjun Mehta</div><div className="trole">CEO, NexaTech Solutions</div></div>
+              <div className="tavatar cyan">01</div>
+              <div><div className="tname">Discovery Phase</div><div className="trole">Strategic Blueprinting</div></div>
             </div>
           </div>
           <div className={`tcard fade-left d3 ${isActive ? 'vis' : ''}`} data-panel="4">
-            <div className="stars">★★★★★</div>
-            <p className="ttext">"Ventura AI is genuinely revolutionary. The team didn't just build us a website — they built us a growth engine that runs on autopilot."</p>
+            <div className="stars" style={{ color: 'var(--purple)', fontWeight: 700 }}>02. AGILE ENGINEERING</div>
+            <p className="ttext">"Our team builds clean, maintainable, and high-performance software using modern frameworks like Next.js, React, and cloud integrations with transparent milestones."</p>
             <div className="tauthor">
-              <div className="tavatar purple">PR</div>
-              <div><div className="tname">Priya Rajan</div><div className="trole">Founder, GrowthBloc</div></div>
+              <div className="tavatar purple">02</div>
+              <div><div className="tname">Development</div><div className="trole">Iterative Sprints & Quality Code</div></div>
             </div>
           </div>
           <div className={`tcard fade-left d4 ${isActive ? 'vis' : ''}`} data-panel="4">
-            <div className="stars">★★★★★</div>
-            <p className="ttext">"Our e-commerce conversion rate jumped 220% after their digital marketing overhaul. Exceptional team, exceptional results."</p>
+            <div className="stars" style={{ color: 'var(--gold)', fontWeight: 700 }}>03. LAUNCH & GROWTH</div>
+            <p className="ttext">"We deploy your application with performance optimizations, security audits, SEO metadata, and ongoing technical support."</p>
             <div className="tauthor">
-              <div className="tavatar gold">DC</div>
-              <div><div className="tname">David Chen</div><div className="trole">CMO, UrbanCart</div></div>
+              <div className="tavatar gold">03</div>
+              <div><div className="tname">Deployment</div><div className="trole">Optimized & Scalable</div></div>
             </div>
           </div>
         </div>
         <div className={`contact-col fade-right d2 ${isActive ? 'vis' : ''}`} data-panel="4">
           <div className="glass contact-box">
-            <div className="ctitle">Let's Build Together</div>
-            <p className="csub">Ready to transform your digital presence? Drop us a message — we respond within 24 hours.</p>
-            <form onSubmit={handleForm}>
-              <div className="fg"><input className="fi" type="text" name="userName" placeholder="Your Name" required /></div>
-              <div className="fg"><input className="fi" type="email" name="userEmail" placeholder="Email Address" required /></div>
-              <div className="fg"><input className="fi" type="text" name="userCompany" placeholder="Company (optional)" /></div>
-              <div className="fg"><textarea className="ft" name="userMessage" placeholder="Tell us about your project..." required></textarea></div>
+            <div className="ctitle">Start a Project</div>
+            <p className="csub">Have a project idea or need custom software? Send us a message and our engineering team will get back to you.</p>
+            <form onSubmit={handleForm} aria-label="Contact form">
+              <div className="fg">
+                <label htmlFor="userName" className="sr-only" style={{ display: 'none' }}>Your Name</label>
+                <input id="userName" className="fi" type="text" name="userName" placeholder="Your Name" aria-label="Your Name" required />
+              </div>
+              <div className="fg">
+                <label htmlFor="userEmail" className="sr-only" style={{ display: 'none' }}>Email Address</label>
+                <input id="userEmail" className="fi" type="email" name="userEmail" placeholder="Email Address" aria-label="Email Address" required />
+              </div>
+              <div className="fg">
+                <label htmlFor="userCompany" className="sr-only" style={{ display: 'none' }}>Company</label>
+                <input id="userCompany" className="fi" type="text" name="userCompany" placeholder="Company (optional)" aria-label="Company (optional)" />
+              </div>
+              <div className="fg">
+                <label htmlFor="userMessage" className="sr-only" style={{ display: 'none' }}>Project Details</label>
+                <textarea id="userMessage" className="ft" name="userMessage" placeholder="Tell us about your project requirements..." aria-label="Project Details" required></textarea>
+              </div>
               <button type="submit" className="fsub" style={btnStyle}>{btnText}</button>
             </form>
           </div>
           <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-            <a href="#" style={{ color: 'var(--w50)', fontSize: '.8rem', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--cyan)'} onMouseOut={(e) => e.target.style.color = 'var(--w50)'}>LinkedIn</a>
-            <a href="#" style={{ color: 'var(--w50)', fontSize: '.8rem', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--cyan)'} onMouseOut={(e) => e.target.style.color = 'var(--w50)'}>Twitter/X</a>
-            <a href="#" style={{ color: 'var(--w50)', fontSize: '.8rem', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--cyan)'} onMouseOut={(e) => e.target.style.color = 'var(--w50)'}>Instagram</a>
+            <a 
+              href="https://linkedin.com/company/discover-crew-technologies" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'var(--w50)', fontSize: '.8rem', textDecoration: 'none' }}
+              onMouseOver={(e) => e.target.style.color = 'var(--cyan)'} 
+              onMouseOut={(e) => e.target.style.color = 'var(--w50)'}
+            >
+              LinkedIn
+            </a>
+            <a 
+              href="https://twitter.com/discovercrew" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'var(--w50)', fontSize: '.8rem', textDecoration: 'none' }}
+              onMouseOver={(e) => e.target.style.color = 'var(--cyan)'} 
+              onMouseOut={(e) => e.target.style.color = 'var(--w50)'}
+            >
+              Twitter/X
+            </a>
           </div>
 
           {/* WhatsApp CTA */}
@@ -129,6 +158,7 @@ export default function ContactPanel({ isActive }) {
             href="https://wa.me/919500607705?text=Hello%20DiscoverCrew%0AName:%20%0AEmail:%20%0AMessage:%20"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Chat with Discover Crew on WhatsApp"
           >
             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '20px', height: '20px', flexShrink: 0 }}>
               <path fill="currentColor" d="M16 0C7.164 0 0 7.163 0 16c0 2.822.737 5.469 2.027 7.773L0 32l8.489-2.001A15.926 15.926 0 0 0 16 32c8.836 0 16-7.163 16-16S24.836 0 16 0zm8.293 22.979c-.344.968-1.703 1.77-2.793 2.003-.744.158-1.715.284-4.985-1.071-4.181-1.706-6.873-5.944-7.082-6.218-.2-.273-1.679-2.236-1.679-4.265 0-2.029 1.062-3.024 1.44-3.44.344-.372.748-.465 1-.465l.716.013c.23.01.538-.087.842.641.312.748 1.062 2.577 1.156 2.767.093.19.155.413.03.667-.124.254-.186.413-.373.636-.186.224-.392.5-.56.673-.186.19-.38.397-.163.779.217.382.963 1.588 2.067 2.573 1.42 1.263 2.617 1.654 2.999 1.839.382.186.604.155.826-.093.223-.248.956-1.116 1.212-1.499.254-.382.508-.317.857-.19.348.127 2.213 1.043 2.594 1.232.382.19.636.285.73.444.093.158.093.914-.252 1.882z"/>
@@ -140,3 +170,4 @@ export default function ContactPanel({ isActive }) {
     </div>
   );
 }
+

@@ -1,40 +1,105 @@
 import './globals.css';
+import { Syne, DM_Sans } from 'next/font/google';
+
+const syne = Syne({
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+  variable: '--font-syne',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
 
 export const metadata = {
   metadataBase: new URL('https://discovercrewtechnologies.com'),
   alternates: {
     canonical: '/',
   },
-  title: 'Discover Crew Technologies | AI Software & Web Development Agency',
-  description: 'We engineer custom software, Next.js web applications, and AI integrations. Scale your business with custom automated solutions and our flagship Ventura AI.',
+  title: 'Discover Crew Technologies | AI, Software & SaaS Development',
+  description: 'Discover Crew Technologies builds custom software, web and mobile apps, AI automation, SaaS platforms and digital solutions for businesses.',
+  keywords: [
+    'custom software development',
+    'AI automation solutions',
+    'SaaS development company',
+    'web application development',
+    'mobile app development',
+    'Ventura AI',
+    'Event OS',
+    'business automation',
+    'Discover Crew Technologies'
+  ],
+  authors: [{ name: 'Discover Crew Technologies' }],
+  creator: 'Discover Crew Technologies',
+  publisher: 'Discover Crew Technologies',
   icons: {
     icon: '/logo.jpeg',
     apple: '/logo.jpeg',
   },
   openGraph: {
-    title: 'Discover Crew Technologies | AI Software & Web Development Agency',
-    description: 'We engineer custom software, Next.js web applications, and AI integrations. Scale your business with custom automated solutions and our flagship Ventura AI.',
-    images: ['/logo.jpeg'],
+    title: 'Discover Crew Technologies | AI, Software & SaaS Development',
+    description: 'Discover Crew Technologies builds custom software, web and mobile apps, AI automation, SaaS platforms and digital solutions for businesses.',
     url: 'https://discovercrewtechnologies.com/',
+    siteName: 'Discover Crew Technologies',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/logo.jpeg',
+        width: 800,
+        height: 800,
+        alt: 'Discover Crew Technologies Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Discover Crew Technologies | AI, Software & SaaS Development',
+    description: 'Discover Crew Technologies builds custom software, web and mobile apps, AI automation, SaaS platforms and digital solutions for businesses.',
+    images: ['/logo.jpeg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
 const jsonLdSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Organization',
   'name': 'Discover Crew Technologies',
-  'image': 'https://discovercrewtechnologies.com/logo.jpeg',
+  'legalName': 'Discover Crew Technologies',
   'url': 'https://discovercrewtechnologies.com',
+  'logo': 'https://discovercrewtechnologies.com/logo.jpeg',
+  'description': 'Discover Crew Technologies is a technology company that builds custom software, web and mobile applications, AI-powered automation, SaaS products and digital solutions for businesses.',
   'telephone': '+919500607705',
   'address': {
     '@type': 'PostalAddress',
     'addressCountry': 'IN'
   },
   'founders': [
-    { '@type': 'Person', 'name': 'Rohith' },
-    { '@type': 'Person', 'name': 'Aravinth' },
-    { '@type': 'Person', 'name': 'Tharun' },
-    { '@type': 'Person', 'name': 'Gowtham' }
+    { '@type': 'Person', 'name': 'Rohith', 'jobTitle': 'Founder & Full Stack Developer' },
+    { '@type': 'Person', 'name': 'Aravinth', 'jobTitle': 'Co-Founder & Cyber Tech' },
+    { '@type': 'Person', 'name': 'Gowtham', 'jobTitle': 'Co-Founder & Digital Marketing' }
+  ],
+  'knowsAbout': [
+    'Custom Software Development',
+    'Web Application Development',
+    'Mobile Application Development',
+    'AI Integration and Automation',
+    'SaaS Product Development',
+    'Digital Marketing'
   ],
   'sameAs': [
     'https://linkedin.com/company/discover-crew-technologies',
@@ -44,14 +109,8 @@ const jsonLdSchema = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${syne.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
@@ -61,4 +120,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
 

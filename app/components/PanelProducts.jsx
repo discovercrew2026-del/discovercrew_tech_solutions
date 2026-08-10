@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function PanelProducts({ isActive }) {
   const scrollRef = useRef(null);
@@ -57,12 +58,17 @@ export default function PanelProducts({ isActive }) {
       <div className="services-content">
         <div className={`services-header glass fade-left ${isActive ? 'vis' : ''}`} data-panel="2">
           <div className="eyebrow">
-            <span className="eyebrow-dot"></span>Our Flagships
+            <span className="eyebrow-dot"></span>PROPRIETARY PRODUCTS
           </div>
           <h2 className="section-h2">Our <span className="acc">Products</span></h2>
           <p className="section-sub">
-            Proprietary SaaS solutions built in-house to solve complex industry challenges with artificial intelligence.
+            In addition to custom software engineering for clients, Discover Crew Technologies builds and maintains in-house software products tailored for modern business operations.
           </p>
+          <div style={{ marginTop: '1.5rem' }}>
+            <Link href="/products" className="btn-ghost" style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem' }}>
+              View All Products &rarr;
+            </Link>
+          </div>
         </div>
         
         <div className={`products-grid-wrapper fade-up d2 ${isActive ? 'vis' : ''}`} data-panel="2">
@@ -70,39 +76,49 @@ export default function PanelProducts({ isActive }) {
             <div className="products-list">
               <div className={`product-card fade-up d1 ${isActive ? 'vis' : ''}`} data-panel="2">
                 <div className="product-info">
-                  <div className="product-tagline">PLATFORM</div>
+                  <div className="product-tagline">AI BUSINESS PLATFORM</div>
                   <h3 className="product-name">⚡ Ventura AI</h3>
                   <div className="product-desc">
-                    Ventura AI is an all-in-one AI platform that helps businesses automate tasks, manage leads, generate content, and get smart insights — all from one premium dashboard.
+                    Ventura AI is Discover Crew's AI-powered business platform designed to help teams manage tasks, leads, content, and business workflows from one central dashboard.
                   </div>
                   <div className="product-tags">
-                    <span className="stag cyan">AI-POWERED</span>
-                    <span className="stag purple">AUTOMATION</span>
+                    <span className="stag cyan">AI PLATFORM</span>
+                    <span className="stag purple">WORKFLOW AUTOMATION</span>
                   </div>
                 </div>
-                <a 
-                  href="https://ventura-ai-9af62.web.app/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="product-cta"
-                >
-                  Open App &rarr;
-                </a>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                  <Link href="/products/ventura-ai" className="product-cta" style={{ textDecoration: 'none' }}>
+                    View Overview &rarr;
+                  </Link>
+                  <a 
+                    href="https://ventura-ai-kappa.vercel.app/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    style={{ fontSize: '0.85rem', color: 'var(--w50)', textDecoration: 'none' }}
+                  >
+                    Open Live App ↗
+                  </a>
+                </div>
               </div>
               
               <div className={`product-card fade-up d2 ${isActive ? 'vis' : ''}`} data-panel="2">
                 <div className="product-info">
-                  <div className="product-tagline">MANAGEMENT</div>
+                  <div className="product-tagline">EVENT MANAGEMENT PLATFORM</div>
                   <h3 className="product-name acc">🗓️ Event OS</h3>
                   <div className="product-desc">
-                    A complete event management platform for organizers. Create events, sell tickets, manage registrations, track attendance, and coordinate your team — all in one unified place.
+                    Event OS is an event management platform currently under development. It is engineered to help organizers handle event creation, ticketing, registration, attendance, and team coordination.
                   </div>
                   <div className="product-tags">
-                    <span className="stag gold">EVENT TECH</span>
-                    <span className="stag cyan">TICKETING</span>
+                    <span className="stag gold">UNDER DEVELOPMENT</span>
+                    <span className="stag cyan">EVENT TICKETING</span>
                   </div>
                 </div>
-                <button className="product-cta" disabled style={{opacity: 0.5, cursor: 'not-allowed'}}>🚧 Under Development</button>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                  <Link href="/products/event-os" className="product-cta" style={{ textDecoration: 'none' }}>
+                    View Overview &rarr;
+                  </Link>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--gold)', opacity: 0.8 }}>🚧 In Active Development</span>
+                </div>
               </div>
             </div>
           </div>
@@ -122,3 +138,4 @@ export default function PanelProducts({ isActive }) {
     </div>
   );
 }
+

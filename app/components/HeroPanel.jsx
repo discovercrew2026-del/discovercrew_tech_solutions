@@ -2,52 +2,39 @@
 
 import React from 'react';
 
-function AnimatedNumber({ target, suffix, isActive }) {
-  const [count, setCount] = React.useState(0);
-
-  React.useEffect(() => {
-    if (!isActive) { setCount(0); return; }
-    let start = null;
-    let animationFrame;
-    const duration = 2000;
-    const step = (timestamp) => {
-      if (!start) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 4);
-      setCount(Math.floor(ease * target));
-      if (progress < 1) animationFrame = window.requestAnimationFrame(step);
-    };
-    const timeout = setTimeout(() => { animationFrame = window.requestAnimationFrame(step); }, 500);
-    return () => { clearTimeout(timeout); window.cancelAnimationFrame(animationFrame); };
-  }, [target, isActive]);
-
-  return <>{count}{suffix}</>;
-}
-
 export default function HeroPanel({ isActive, scrollTo }) {
   return (
     <div className="panel" id="panel-0">
       <div className="hero-content glass">
         <div className={`eyebrow fade-left ${isActive ? 'vis' : ''}`}>
-          <span className="eyebrow-dot"></span>AI-Powered Digital Innovation
+          <span className="eyebrow-dot"></span>Software Development & AI Solutions
         </div>
         <h1 className={`h1 fade-left d1 ${isActive ? 'vis' : ''}`}>
-          We Build<br /><span className="acc">Tomorrow&apos;s</span><br />Digital Reality
+          Custom Software, <span className="acc">AI & Digital Solutions</span> for Businesses
         </h1>
         <p className={`hero-sub fade-left d2 ${isActive ? 'vis' : ''}`}>
-          Discover Crew delivers cutting-edge web development, strategic digital marketing,
-          and AI automation — plus our own proprietary product, <strong>Ventura AI</strong>.
+          Discover Crew Technologies builds custom software, web and mobile applications, AI-powered automation, and SaaS platforms to streamline operations and accelerate business growth.
         </p>
         <div className={`hero-actions fade-left d3 ${isActive ? 'vis' : ''}`}>
-          <button className="btn-primary" onClick={() => scrollTo(1)}>Explore Services</button>
-          <button className="btn-ghost" onClick={() => scrollTo(2)}>View Ventura AI &rarr;</button>
+          <button className="btn-primary" onClick={() => scrollTo(4)}>Start a Project</button>
+          <button className="btn-ghost" onClick={() => scrollTo(2)}>Explore Our Products &rarr;</button>
         </div>
         <div className={`hero-stats fade-up d4 ${isActive ? 'vis' : ''}`}>
-          <div><div className="stat-num"><AnimatedNumber target={2} suffix="+" isActive={isActive} /></div><div className="stat-label">Projects Delivered</div></div>
-          <div><div className="stat-num"><AnimatedNumber target={2} suffix="+" isActive={isActive} /></div><div className="stat-label">Happy Clients</div></div>
-          <div><div className="stat-num"><AnimatedNumber target={98} suffix="%" isActive={isActive} /></div><div className="stat-label">Satisfaction Rate</div></div>
+          <div>
+            <div className="stat-num" style={{ fontSize: '1rem', color: 'var(--cyan)' }}>Custom Software</div>
+            <div className="stat-label">Web & Mobile Apps</div>
+          </div>
+          <div>
+            <div className="stat-num" style={{ fontSize: '1rem', color: 'var(--purple)' }}>AI & Automation</div>
+            <div className="stat-label">Workflow Efficiency</div>
+          </div>
+          <div>
+            <div className="stat-num" style={{ fontSize: '1rem', color: 'var(--gold)' }}>SaaS Platforms</div>
+            <div className="stat-label">Ventura AI & Event OS</div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
