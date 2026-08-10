@@ -49,10 +49,10 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/logo.jpeg',
-        width: 800,
-        height: 800,
-        alt: 'Discover Crew Technologies Logo',
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Discover Crew Technologies — Custom Software, AI & SaaS Development',
       },
     ],
   },
@@ -60,7 +60,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Discover Crew Technologies | AI, Software & SaaS Development',
     description: 'Discover Crew Technologies builds custom software, web and mobile apps, AI automation, SaaS platforms and digital solutions for businesses.',
-    images: ['/logo.jpeg'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -75,7 +75,7 @@ export const metadata = {
   },
 };
 
-const jsonLdSchema = {
+const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   'name': 'Discover Crew Technologies',
@@ -107,13 +107,33 @@ const jsonLdSchema = {
   ]
 };
 
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  'name': 'Discover Crew Technologies',
+  'url': 'https://discovercrewtechnologies.com',
+  'description': 'Discover Crew Technologies builds custom software, web and mobile applications, AI-powered automation, SaaS products and digital solutions for businesses.',
+  'potentialAction': {
+    '@type': 'SearchAction',
+    'target': {
+      '@type': 'EntryPoint',
+      'urlTemplate': 'https://discovercrewtechnologies.com/?q={search_term_string}'
+    },
+    'query-input': 'required name=search_term_string'
+  }
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body suppressHydrationWarning>{children}</body>

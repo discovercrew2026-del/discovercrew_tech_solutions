@@ -8,11 +8,61 @@ export const metadata = {
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/products/event-os',
   },
+  openGraph: {
+    title: 'Event OS — Event Management Platform',
+    description: 'Event creation, attendee registration, ticketing, and check-in tracking platform built by Discover Crew Technologies.',
+    url: 'https://discovercrewtechnologies.com/products/event-os',
+  },
+};
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  'name': 'Event OS',
+  'applicationCategory': 'BusinessApplication',
+  'operatingSystem': 'Web Browser',
+  'description': 'All-in-one event management platform for event creation, registration, ticketing, and real-time attendance tracking.',
+  'author': {
+    '@type': 'Organization',
+    'name': 'Discover Crew Technologies',
+    'url': 'https://discovercrewtechnologies.com'
+  }
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'What is Event OS?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Event OS is an all-in-one event management platform being developed by Discover Crew Technologies for event creation, ticketing, attendee registration, and check-in tracking.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'When will Event OS be available for public launch?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Event OS is currently under active development. Interested event organizers can contact Discover Crew Technologies for early access and pilot program participation.'
+      }
+    }
+  ]
 };
 
 export default function EventOSPage() {
   return (
     <div className="subpage-container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navigation />
 
       <main className="subpage-hero">
@@ -57,6 +107,20 @@ export default function EventOSPage() {
                 Post-event analytics, ticket sales performance, demographic summaries, and peak check-in timeline reports.
               </p>
             </div>
+          </div>
+        </section>
+
+        <section className="subpage-section" style={{ paddingLeft: 0, paddingRight: 0 }}>
+          <h2 style={{ fontFamily: 'var(--ff-display)', fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem' }}>
+            Frequently Asked Questions
+          </h2>
+          <div className="subpage-faq-item">
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>What is Event OS?</h3>
+            <p style={{ color: 'var(--w50)', fontSize: '0.95rem' }}>Event OS is an all-in-one event management platform being developed by Discover Crew Technologies for event creation, ticketing, attendee registration, and check-in tracking.</p>
+          </div>
+          <div className="subpage-faq-item">
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>When will Event OS be available for public launch?</h3>
+            <p style={{ color: 'var(--w50)', fontSize: '0.95rem' }}>Event OS is currently under active development. Interested event organizers can contact Discover Crew Technologies for early access and pilot program participation.</p>
           </div>
         </section>
 

@@ -34,12 +34,47 @@ const productSchema = {
   }
 };
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'What is Ventura AI?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Ventura AI is an AI-powered business platform built by Discover Crew Technologies that unifies task tracking, lead organization, AI content drafting, and business metrics in a single interface.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'How can our team access Ventura AI?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'You can access the live Ventura AI application directly via the web app link, or contact Discover Crew Technologies for custom setup and integration.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Can Ventura AI be customized for custom enterprise workflows?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Yes. Discover Crew Technologies offers custom engineering services to extend Ventura AI, connect existing database backends, or build tailored workflow modules for your team.'
+      }
+    }
+  ]
+};
+
 export default function VenturaAIPage() {
   return (
     <div className="subpage-container">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
 
@@ -111,6 +146,24 @@ export default function VenturaAIPage() {
               <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--gold)' }}>Founders & Managers</h3>
               <p style={{ color: 'var(--w50)', fontSize: '0.9rem', marginTop: '0.5rem' }}>Business leaders looking to streamline internal operations and maintain visibility across workflows.</p>
             </div>
+          </div>
+        </section>
+
+        <section className="subpage-section" style={{ paddingLeft: 0, paddingRight: 0 }}>
+          <h2 style={{ fontFamily: 'var(--ff-display)', fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem' }}>
+            Frequently Asked Questions
+          </h2>
+          <div className="subpage-faq-item">
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>What is Ventura AI?</h3>
+            <p style={{ color: 'var(--w50)', fontSize: '0.95rem' }}>Ventura AI is an AI-powered business platform built by Discover Crew Technologies that unifies task tracking, lead organization, AI content drafting, and business metrics in a single interface.</p>
+          </div>
+          <div className="subpage-faq-item">
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>How can our team access Ventura AI?</h3>
+            <p style={{ color: 'var(--w50)', fontSize: '0.95rem' }}>You can access the live Ventura AI application directly via the web app link, or contact Discover Crew Technologies for custom setup and integration.</p>
+          </div>
+          <div className="subpage-faq-item">
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>Can Ventura AI be customized for custom enterprise workflows?</h3>
+            <p style={{ color: 'var(--w50)', fontSize: '0.95rem' }}>Yes. Discover Crew Technologies offers custom engineering services to extend Ventura AI, connect existing database backends, or build tailored workflow modules for your team.</p>
           </div>
         </section>
 

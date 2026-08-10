@@ -29,12 +29,64 @@ const serviceSchema = {
   'areaServed': 'Worldwide'
 };
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'What technologies do you use for web development?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'We primarily build with Next.js, React, JavaScript/TypeScript, Node.js, and cloud backend infrastructure (Firebase, Supabase, AWS).'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Will our web application be optimized for mobile and search engines?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Yes. Every project includes responsive mobile layout design, technical SEO optimization, meta tags, Core Web Vitals tuning, and accessibility adherence.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'How long does it take to build a web application?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Timeline depends on the scope and complexity of the project. A simple web application typically takes 4–8 weeks. More complex platforms with custom backends, integrations, or dashboards can take 2–4 months. We provide a detailed timeline estimate after reviewing your requirements.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Can you build web applications that integrate with third-party APIs?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Yes. We regularly integrate web applications with payment gateways (Stripe, Razorpay), CRMs, analytics platforms, email services, AI APIs, and custom REST or GraphQL backends.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Do you provide ongoing support after the website is launched?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Yes. We offer ongoing technical maintenance, security monitoring, performance updates, and feature development after launch. Support terms are discussed as part of the project agreement.'
+      }
+    }
+  ]
+};
+
+
 export default function WebDevelopmentPage() {
   return (
     <div className="subpage-container">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
 
@@ -116,6 +168,18 @@ export default function WebDevelopmentPage() {
           <div className="subpage-faq-item">
             <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>Will our web application be optimized for mobile and search engines?</h3>
             <p style={{ color: 'var(--w50)', fontSize: '0.95rem' }}>Yes. Every project includes responsive mobile layout design, technical SEO optimization, meta tags, Core Web Vitals tuning, and accessibility adherence.</p>
+          </div>
+          <div className="subpage-faq-item">
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>How long does it take to build a web application?</h3>
+            <p style={{ color: 'var(--w50)', fontSize: '0.95rem' }}>Timeline depends on the scope and complexity. A straightforward web application typically takes 4–8 weeks. More complex platforms with custom backends, integrations, or dashboards can take 2–4 months. We provide a detailed timeline estimate after reviewing your requirements.</p>
+          </div>
+          <div className="subpage-faq-item">
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>Can you build web applications that integrate with third-party APIs?</h3>
+            <p style={{ color: 'var(--w50)', fontSize: '0.95rem' }}>Yes. We regularly integrate web applications with payment gateways (Stripe, Razorpay), CRMs, analytics platforms, email services, AI APIs, and custom REST or GraphQL backends.</p>
+          </div>
+          <div className="subpage-faq-item">
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>Do you provide ongoing support after the website is launched?</h3>
+            <p style={{ color: 'var(--w50)', fontSize: '0.95rem' }}>Yes. We offer ongoing technical maintenance, security updates, performance improvements, and feature development after launch. Support terms are agreed upon as part of the project.</p>
           </div>
         </section>
 

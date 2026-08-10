@@ -10,6 +10,32 @@ export const metadata = {
   },
 };
 
+const aboutPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  'name': 'About Discover Crew Technologies',
+  'url': 'https://discovercrewtechnologies.com/about',
+  'description': 'Discover Crew Technologies is a technology company focused on building custom software, web and mobile applications, AI-powered automation, and SaaS products for businesses.',
+  'inLanguage': 'en',
+  'isPartOf': {
+    '@type': 'WebSite',
+    'name': 'Discover Crew Technologies',
+    'url': 'https://discovercrewtechnologies.com'
+  },
+  'about': {
+    '@type': 'Organization',
+    'name': 'Discover Crew Technologies',
+    'url': 'https://discovercrewtechnologies.com',
+    'description': 'Technology company building custom software, web and mobile applications, AI automation, and SaaS products.',
+    'founders': [
+      { '@type': 'Person', 'name': 'Rohith', 'jobTitle': 'Founder & Full Stack Developer' },
+      { '@type': 'Person', 'name': 'Aravinth', 'jobTitle': 'Co-Founder & Cyber Tech' },
+      { '@type': 'Person', 'name': 'Gowtham', 'jobTitle': 'Co-Founder & Digital Marketing' }
+    ]
+  }
+};
+
+
 const teamMembers = [
   { name: 'Rohith', role: 'Founder & Full Stack Developer', img: '/Paul New.png', desc: 'Focuses on web architecture, Next.js application development, and full-stack software engineering.' },
   { name: 'Aravinth', role: 'Co-Founder & Cyber Tech', img: '/T1.jpg', desc: 'Specializes in security protocols, cloud infrastructure, and technical system reliability.' },
