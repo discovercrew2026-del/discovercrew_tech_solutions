@@ -6,7 +6,7 @@ import Link from 'next/link';
 const services = [
   { id: 'web', slug: 'web-development', title: 'Web Development', icon: '⚡', color: 'cyan', tag: 'FULL STACK', desc: 'Fast, secure, responsive web applications built with Next.js, React, and modern web frameworks. Built for performance and conversion.' },
   { id: 'mobile', slug: 'mobile-development', title: 'Mobile Development', icon: '📱', color: 'blue', tag: 'IOS & ANDROID', desc: 'Cross-platform and native mobile apps for iOS and Android. High-performance mobile experiences engineered for seamless user interaction.' },
-  { id: 'marketing', slug: 'digital-marketing', title: 'Digital Marketing', icon: '🎯', color: 'purple', tag: 'GROWTH', desc: 'Data-driven SEO, targeted digital campaigns, content strategy, and conversion optimization to drive verified business growth.' },
+  { id: 'marketing', slug: 'ai-marketing', title: 'AI Marketing', navLabel: 'AI Marketing', icon: '🎯', color: 'purple', tag: 'AI-DRIVEN GROWTH', desc: 'Data-driven AI SEO, automated marketing workflows, predictive audience targeting, and conversion optimization to scale your business.' },
   { id: 'ai', slug: 'ai-automation', title: 'AI & Automation', icon: '🤖', color: 'gold', tag: 'AI-POWERED', desc: 'Custom AI integrations and business process automation to eliminate repetitive tasks, optimize workflows, and enhance operational speed.' },
   { id: 'software', slug: 'software-development', title: 'Software Development', icon: '💻', color: 'indigo', tag: 'CUSTOM BUILT', desc: 'Tailored software solutions engineered for specific business challenges — including custom dashboards, internal tools, and robust APIs.' },
   { id: 'saas', slug: 'saas-development', title: 'SaaS Development', icon: '☁️', color: 'teal', tag: 'CLOUD-BASED', desc: 'End-to-end SaaS application engineering with multi-tenant architecture, automated subscription management, and enterprise-grade security.' }
@@ -86,7 +86,7 @@ export default function ServicesPanel({ isActive }) {
           <div className="services-sub-nav">
             {services.map(s => (
               <div key={s.id} className={`sub-nav-item ${activeSubId === s.id ? 'active' : ''}`} onClick={() => scrollToService(s.id)}>
-                {s.title.split(' ')[0]}
+                {s.navLabel || s.title.split(' ')[0]}
               </div>
             ))}
           </div>

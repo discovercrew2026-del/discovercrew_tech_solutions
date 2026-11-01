@@ -55,7 +55,7 @@ export default function AboutPage() {
             Who We Are & What We Do
           </h2>
           <p style={{ color: 'var(--w80)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1.5rem', maxWidth: '850px' }}>
-            We work across custom software development, web and mobile applications, AI integration, SaaS development, automation, and digital marketing. Alongside client engineering projects, we build and maintain our own proprietary software products, including Ventura AI and Event OS.
+            We work across custom software development, web and mobile applications, AI integration, SaaS development, automation, and AI marketing. Alongside client engineering projects, we build and maintain our own proprietary software products, including Ventura AI and Event OS.
           </p>
           <p style={{ color: 'var(--w80)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '2.5rem', maxWidth: '850px' }}>
             Our mission is straightforward: understand a business problem, design the right software solution, build it properly with modern frameworks, and ensure it delivers tangible operational value.

@@ -97,7 +97,7 @@ const organizationSchema = {
     'Mobile Application Development',
     'AI Integration and Automation',
     'SaaS Product Development',
-    'Digital Marketing'
+    'AI Marketing & Automation'
   ],
   'sameAs': [
     'https://linkedin.com/company/discover-crew-technologies',

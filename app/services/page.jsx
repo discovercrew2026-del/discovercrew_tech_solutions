@@ -4,7 +4,7 @@ import Navigation from '../components/Navigation';
 
 export const metadata = {
   title: 'Technology & Software Development Services | Discover Crew Technologies',
-  description: 'Explore custom software development, web applications, mobile apps, AI automation, SaaS platforms, and digital marketing services by Discover Crew Technologies.',
+  description: 'Explore custom software development, web applications, mobile apps, AI automation, SaaS platforms, and AI marketing services by Discover Crew Technologies.',
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/services',
   },
@@ -47,10 +47,10 @@ const serviceItems = [
     color: 'var(--teal)'
   },
   {
-    slug: 'digital-marketing',
-    title: 'Digital Growth & Technical SEO',
-    tag: 'SEO & Performance',
-    desc: 'Strategic search engine optimization, technical web audits, conversion rate optimization, and data-driven marketing campaigns.',
+    slug: 'ai-marketing',
+    title: 'AI Marketing & Growth Automation',
+    tag: 'AI Marketing & SEO',
+    desc: 'Strategic AI-driven search engine optimization, predictive customer modeling, automated marketing workflows, and conversion rate optimization.',
     color: 'var(--purple)'
   }
 ];

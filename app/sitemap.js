@@ -9,7 +9,7 @@ export default async function sitemap() {
     '/services/software-development',
     '/services/ai-automation',
     '/services/saas-development',
-    '/services/digital-marketing',
+    '/services/ai-marketing',
     '/products',
     '/products/ventura-ai',
     '/products/event-os',

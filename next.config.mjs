@@ -11,6 +11,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/services/digital-marketing',
+        destination: '/services/ai-marketing',
+        permanent: true,
+      },
+      {
         source: '/:path*',
         has: [
           {
