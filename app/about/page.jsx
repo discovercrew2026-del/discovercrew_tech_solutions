@@ -28,18 +28,14 @@ const aboutPageSchema = {
     'url': 'https://discovercrewtechnologies.com',
     'description': 'Technology company building custom software, web and mobile applications, AI automation, and SaaS products.',
     'founders': [
-      { '@type': 'Person', 'name': 'Rohith', 'jobTitle': 'Founder & Full Stack Developer' },
-      { '@type': 'Person', 'name': 'Aravinth', 'jobTitle': 'Co-Founder & Cyber Tech' },
-      { '@type': 'Person', 'name': 'Gowtham', 'jobTitle': 'Co-Founder & Digital Marketing' }
+      { '@type': 'Person', 'name': 'Rohith', 'jobTitle': 'Founder & Full Stack Developer' }
     ]
   }
 };
 
 
 const teamMembers = [
-  { name: 'Rohith', role: 'Founder & Full Stack Developer', img: '/Paul New.png', desc: 'Focuses on web architecture, Next.js application development, and full-stack software engineering.' },
-  { name: 'Aravinth', role: 'Co-Founder & Cyber Tech', img: '/T1.jpg', desc: 'Specializes in security protocols, cloud infrastructure, and technical system reliability.' },
-  { name: 'Gowtham', role: 'Co-Founder & Digital Marketing', img: '/T4.png', desc: 'Drives strategic digital marketing, technical SEO audits, and conversion optimization campaigns.' },
+  { name: 'Rohith', role: 'Founder & Full Stack Developer', img: '/Paul New.png', desc: 'Focuses on web architecture, Next.js application development, cloud infrastructure, and full-stack software engineering.' },
 ];
 
 export default function AboutPage() {
@@ -83,7 +79,7 @@ export default function AboutPage() {
 
         <section className="subpage-section" style={{ paddingLeft: 0, paddingRight: 0 }}>
           <h2 style={{ fontFamily: 'var(--ff-display)', fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem' }}>
-            Leadership & Core Team
+            Company Leadership & Founder
           </h2>
           <div className="subpage-grid-2">
             {teamMembers.map(m => (

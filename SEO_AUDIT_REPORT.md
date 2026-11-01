@@ -52,7 +52,7 @@ This document records the full-spectrum audit and implementation fixes performed
 ### Issue 5: Structured Data (JSON-LD)
 - **Severity**: Medium (Rich Results / Search Entity)
 - **Previous State**: Incomplete schema missing founder details and service capabilities.
-- **Fix Implemented**: Added valid JSON-LD `Organization` schema in `app/layout.jsx` detailing company founders (Rohith, Aravinth, Gowtham), social profiles, and capabilities. Added `Service` and `SoftwareApplication` JSON-LD schemas to sub-pages.
+- **Fix Implemented**: Added valid JSON-LD `Organization` schema in `app/layout.jsx` detailing company founder (Rohith), social profiles, and capabilities. Added `Service` and `SoftwareApplication` JSON-LD schemas to sub-pages.
 - **Files Modified/Created**: `app/layout.jsx`, sub-page files.
 
 ### Issue 6: Accessibility & Form Labels

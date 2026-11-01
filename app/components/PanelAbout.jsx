@@ -11,8 +11,6 @@ export default function PanelAbout({ isActive }) {
 
   const team = [
     { name: 'Rohith', role: 'FULL STACK DEVELOPER & FOUNDER', img: '/Paul New.png' },
-    { name: 'Aravinth', role: 'CYBER TECH & CO-FOUNDER', img: '/T1.jpg' },
-    { name: 'Gowtham', role: 'DIGITAL MARKETING & CO-FOUNDER', img: '/T4.png' },
   ];
 
   const handleScroll = () => {
@@ -108,11 +106,11 @@ export default function PanelAbout({ isActive }) {
                         <img 
                           src={member.img} 
                           alt={`${member.name} - ${member.role} at Discover Crew Technologies`}
-                          style={{ objectPosition: 'center top' }}
+                          style={{ objectPosition: 'center top', filter: 'grayscale(0%) contrast(1.05)' }}
                         />
                       </div>
                       <div className="team-col-overlay"></div>
-                      <div className="team-col-info">
+                      <div className="team-col-info" style={{ opacity: 1, visibility: 'visible', transform: 'none' }}>
                         <p className="col-role">{member.role}</p>
                         <p className="col-name">{member.name}</p>
                       </div>

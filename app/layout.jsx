@@ -89,9 +89,7 @@ const organizationSchema = {
     'addressCountry': 'IN'
   },
   'founders': [
-    { '@type': 'Person', 'name': 'Rohith', 'jobTitle': 'Founder & Full Stack Developer' },
-    { '@type': 'Person', 'name': 'Aravinth', 'jobTitle': 'Co-Founder & Cyber Tech' },
-    { '@type': 'Person', 'name': 'Gowtham', 'jobTitle': 'Co-Founder & Digital Marketing' }
+    { '@type': 'Person', 'name': 'Rohith', 'jobTitle': 'Founder & Full Stack Developer' }
   ],
   'knowsAbout': [
     'Custom Software Development',
