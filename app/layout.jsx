@@ -83,7 +83,7 @@ const organizationSchema = {
   'url': 'https://discovercrewtechnologies.com',
   'logo': 'https://discovercrewtechnologies.com/logo.jpeg',
   'description': 'Discover Crew Technologies is a technology company that builds custom software, web and mobile applications, AI-powered automation, SaaS products and digital solutions for businesses.',
-  'telephone': '+919500607705',
+  'telephone': '+918438207188',
   'address': {
     '@type': 'PostalAddress',
     'addressCountry': 'IN'

@@ -37,7 +37,7 @@ export default function ContactPage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
               <div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--cyan)', fontWeight: 700, textTransform: 'uppercase' }}>Direct Phone / WhatsApp</div>
-                <div style={{ fontSize: '1rem', color: 'var(--white)', fontWeight: 600 }}>+91 95006 07705</div>
+                <div style={{ fontSize: '1rem', color: 'var(--white)', fontWeight: 600 }}>+91 84382 07188</div>
               </div>
               <div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--purple)', fontWeight: 700, textTransform: 'uppercase' }}>Official Email</div>
@@ -46,7 +46,7 @@ export default function ContactPage() {
             </div>
 
             <a
-              href="https://wa.me/919500607705?text=Hello%20DiscoverCrew%0AName:%20%0AEmail:%20%0AMessage:%20"
+              href="https://wa.me/918438207188?text=Hello%20DiscoverCrew%0AName:%20%0AEmail:%20%0AMessage:%20"
               target="_blank"
               rel="noopener noreferrer"
               className="whatsapp-contact-btn"
