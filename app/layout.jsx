@@ -46,6 +46,7 @@ export const metadata = {
     'geo.region': 'IN',
     'geo.placename': 'India',
     'target': 'all',
+    'msvalidate.01': 'FF8799A0EAE950099056CDEC5E412DED',
   },
   verification: {
     google: 'google60fb7e2f5adada13',
