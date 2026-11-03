@@ -4,7 +4,7 @@ import Navigation from '../../components/Navigation';
 
 export const metadata = {
   title: 'Custom Software Development Services | Discover Crew Technologies',
-  description: 'Bespoke software development, custom business tools, internal administration dashboards, and REST APIs built by Discover Crew Technologies.',
+  description: 'Bespoke software development, custom business tools, internal administration dashboards, and REST APIs built by Discover Crew Technologies in India and worldwide.',
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/services/software-development',
   },
@@ -19,7 +19,36 @@ const serviceSchema = {
     'name': 'Discover Crew Technologies',
     'url': 'https://discovercrewtechnologies.com'
   },
-  'serviceType': 'Software Development'
+  'serviceType': 'Software Development',
+  'areaServed': [
+    { '@type': 'Country', 'name': 'India' },
+    { '@type': 'AdministrativeArea', 'name': 'Worldwide' }
+  ]
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Services',
+      'item': 'https://discovercrewtechnologies.com/services'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Custom Software Development',
+      'item': 'https://discovercrewtechnologies.com/services/software-development'
+    }
+  ]
 };
 
 const faqSchema = {
@@ -78,11 +107,23 @@ export default function SoftwareDevelopmentPage() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
 
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <Link href="/services" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Services</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>Custom Software Development</span>
+        </div>
+
         <div className="eyebrow"><span className="eyebrow-dot"></span> CUSTOM ENGINEERING</div>
         <h1 className="subpage-h1">Custom Software <span className="acc">Development Services</span></h1>
         <p className="subpage-lead">

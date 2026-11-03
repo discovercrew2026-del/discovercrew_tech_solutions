@@ -28,6 +28,12 @@ export const metadata = {
     'SaaS development company',
     'web application development',
     'mobile app development',
+    'Next.js development company in India',
+    'custom software development India',
+    'SaaS MVP development company',
+    'AI automation services for businesses',
+    'AI Marketing & Automation',
+    'full-stack web development services',
     'Ventura AI',
     'Event OS',
     'business automation',
@@ -36,6 +42,14 @@ export const metadata = {
   authors: [{ name: 'Discover Crew Technologies' }],
   creator: 'Discover Crew Technologies',
   publisher: 'Discover Crew Technologies',
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'target': 'all',
+  },
+  verification: {
+    google: 'google60fb7e2f5adada13',
+  },
   icons: {
     icon: '/logo.jpeg',
     apple: '/logo.jpeg',
@@ -84,10 +98,15 @@ const organizationSchema = {
   'logo': 'https://discovercrewtechnologies.com/logo.jpeg',
   'description': 'Discover Crew Technologies is a technology company that builds custom software, web and mobile applications, AI-powered automation, SaaS products and digital solutions for businesses.',
   'telephone': '+918438207188',
+  'email': 'discovercrew2026@gmail.com',
   'address': {
     '@type': 'PostalAddress',
     'addressCountry': 'IN'
   },
+  'areaServed': [
+    { '@type': 'Country', 'name': 'India' },
+    { '@type': 'AdministrativeArea', 'name': 'Worldwide' }
+  ],
   'founders': [
     { '@type': 'Person', 'name': 'Rohith', 'jobTitle': 'Founder & Full Stack Developer' }
   ],
@@ -97,7 +116,9 @@ const organizationSchema = {
     'Mobile Application Development',
     'AI Integration and Automation',
     'SaaS Product Development',
-    'AI Marketing & Automation'
+    'AI Marketing & Automation',
+    'Business Process Automation Solutions',
+    'Next.js Full-Stack Architecture'
   ],
   'sameAs': [
     'https://linkedin.com/company/discover-crew-technologies',
@@ -138,5 +159,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
-

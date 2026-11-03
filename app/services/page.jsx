@@ -4,10 +4,29 @@ import Navigation from '../components/Navigation';
 
 export const metadata = {
   title: 'Technology & Software Development Services | Discover Crew Technologies',
-  description: 'Explore custom software development, web applications, mobile apps, AI automation, SaaS platforms, and AI marketing services by Discover Crew Technologies.',
+  description: 'Explore custom software development, web applications, mobile apps, AI automation, SaaS platforms, and AI marketing services by Discover Crew Technologies in India and globally.',
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/services',
   },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Services',
+      'item': 'https://discovercrewtechnologies.com/services'
+    }
+  ]
 };
 
 const serviceItems = [
@@ -58,9 +77,18 @@ const serviceItems = [
 export default function ServicesPage() {
   return (
     <div className="subpage-container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navigation />
       
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>Services</span>
+        </div>
         <div className="eyebrow"><span className="eyebrow-dot"></span> OUR CAPABILITIES</div>
         <h1 className="subpage-h1">Software & Technology <span className="acc">Services</span></h1>
         <p className="subpage-lead">

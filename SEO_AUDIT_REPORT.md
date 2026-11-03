@@ -1,13 +1,13 @@
 # Comprehensive Technical & Semantic SEO Audit Report
 **Company**: Discover Crew Technologies  
 **Website**: https://discovercrewtechnologies.com/  
-**Date**: August 2026  
-**Auditor**: Senior Technical SEO Engineer, UX Copywriter & Performance Specialist
+**Date**: November 2026  
+**Auditor**: Senior Technical SEO Engineer, UX Copywriter & GEO Specialist
 
 ---
 
 ## 1. Executive Summary
-This document records the full-spectrum audit and implementation fixes performed on the Discover Crew Technologies website. The primary objectives were eliminating generic AI buzzwords, establishing high E-E-A-T and trust signals, building dedicated sub-page routes for Google indexing, implementing structured JSON-LD schemas, ensuring accessibility, and optimizing for Google AI Overview search queries.
+This document records the full-spectrum audit and implementation fixes performed on the Discover Crew Technologies website. The primary objectives were eliminating generic AI buzzwords, establishing high E-E-A-T and trust signals, building dedicated sub-page routes for Google indexing, implementing structured JSON-LD schemas, ensuring accessibility, implementing Generative Engine Optimization (GEO) for ChatGPT and Perplexity, and optimizing for Google AI Overview search queries.
 
 ---
 
@@ -16,7 +16,7 @@ This document records the full-spectrum audit and implementation fixes performed
 ### Issue 1: Generic / Abstract AI Copy & Misleading Positioning
 - **Severity**: High (Damages conversion rates & user trust)
 - **Previous State**: Included futuristic filler like *"We Build Tomorrow's Digital Reality"*, *"architects of the silent protocols that sustain global connectivity"*, and exaggerated enterprise claims.
-- **Fix Implemented**: Rewrote all copy across `HeroPanel.jsx`, `ServicesPanel.jsx`, `PanelProducts.jsx`, and `PanelAbout.jsx` into clear, natural business English. Formatted positioning around custom software, web/mobile applications, AI integration, SaaS platforms (Ventura AI, Event OS), and digital marketing.
+- **Fix Implemented**: Rewrote all copy across `HeroPanel.jsx`, `ServicesPanel.jsx`, `PanelProducts.jsx`, and `PanelAbout.jsx` into clear, natural business English. Formatted positioning around custom software, web/mobile applications, AI integration, SaaS platforms (Ventura AI, Event OS), and AI marketing.
 - **Files Modified**: `app/components/HeroPanel.jsx`, `app/components/ServicesPanel.jsx`, `app/components/PanelProducts.jsx`, `app/components/PanelAbout.jsx`.
 
 ### Issue 2: Unverified Metrics & Placeholder Testimonials
@@ -36,7 +36,7 @@ This document records the full-spectrum audit and implementation fixes performed
   - `app/services/software-development/page.jsx`
   - `app/services/ai-automation/page.jsx`
   - `app/services/saas-development/page.jsx`
-  - `app/services/digital-marketing/page.jsx`
+  - `app/services/ai-marketing/page.jsx`
   - `app/products/page.jsx`
   - `app/products/ventura-ai/page.jsx`
   - `app/products/event-os/page.jsx`
@@ -49,10 +49,10 @@ This document records the full-spectrum audit and implementation fixes performed
 - **Fix Implemented**: Added title `"Discover Crew Technologies | AI, Software & SaaS Development"`, meta description, Open Graph tags, Twitter card tags, canonical link headers, and individual page metadata across all sub-routes.
 - **Files Modified/Created**: `app/layout.jsx`, all `page.jsx` files.
 
-### Issue 5: Structured Data (JSON-LD)
+### Issue 5: Structured Data (JSON-LD) & BreadcrumbList
 - **Severity**: Medium (Rich Results / Search Entity)
-- **Previous State**: Incomplete schema missing founder details and service capabilities.
-- **Fix Implemented**: Added valid JSON-LD `Organization` schema in `app/layout.jsx` detailing company founder (Rohith), social profiles, and capabilities. Added `Service` and `SoftwareApplication` JSON-LD schemas to sub-pages.
+- **Previous State**: Incomplete schema missing founder details, breadcrumbs, and service capabilities.
+- **Fix Implemented**: Added valid JSON-LD `Organization` schema in `app/layout.jsx` detailing company founder (Rohith), social profiles, and capabilities. Added `Service`, `SoftwareApplication`, and `BreadcrumbList` JSON-LD schemas across all sub-pages.
 - **Files Modified/Created**: `app/layout.jsx`, sub-page files.
 
 ### Issue 6: Accessibility & Form Labels
@@ -63,11 +63,19 @@ This document records the full-spectrum audit and implementation fixes performed
 
 ### Issue 7: WWW to Non-WWW Canonical Domain Redirect
 - **Severity**: Critical (Duplicate Content / SEO Split Penalty)
-- **Previous State**: Website was accessible through both `https://discovercrewtechnologies.com/` and `https://www.discovercrewtechnologies.com/` without server-level redirect, splitting page rank and causing potential duplicate content indexing.
+- **Previous State**: Website was accessible through both `https://discovercrewtechnologies.com/` and `https://www.discovercrewtechnologies.com/` without server-level redirect.
 - **Canonical Domain Established**: `https://discovercrewtechnologies.com/`
-- **Fix Implemented**: Configured server & CDN edge level permanent 301/308 redirects in `next.config.mjs` and `vercel.json`. Any request to `www.discovercrewtechnologies.com/:path*` permanently redirects to `https://discovercrewtechnologies.com/:path*` while preserving full URI path and query parameters.
-- **Deployment Platform**: Vercel Edge Network.
+- **Fix Implemented**: Configured server & CDN edge level permanent 301/308 redirects in `next.config.mjs` and `vercel.json`.
 - **Files Modified/Created**: `next.config.mjs`, `vercel.json`, `.env.example`.
+
+### Issue 8: Generative Engine Optimization (GEO) & Search AI Discovery
+- **Severity**: High (AI Answer Engines / Next-Gen Discovery)
+- **Previous State**: No explicit permissions for AI search crawlers (`OAI-SearchBot`, `PerplexityBot`), no `llms.txt` documentation for LLM ingestion, and no geographic India targeting tags.
+- **Fix Implemented**:
+  1. Configured `app/robots.js` with dedicated rules for `OAI-SearchBot` and `PerplexityBot`.
+  2. Created standardized `public/llms.txt` and `public/llms-full.txt` providing structured, verifiable context for generative AI engines.
+  3. Added regional SEO tags (`geo.region: IN`, `geo.placename: India`, `areaServed: India & Worldwide`).
+  4. Moved Google Search Console verification file (`google60fb7e2f5adada13.html`) to `public/` and added verification meta tag to `app/layout.jsx`.
 
 ---
 
@@ -75,10 +83,12 @@ This document records the full-spectrum audit and implementation fixes performed
 
 - [x] **Single H1 per page**: Verified across Home and all 12 sub-pages.
 - [x] **Unique SEO Titles & Meta Descriptions**: Verified on every route.
-- [x] **Canonical Domain & Tags**: Enforced non-www `https://discovercrewtechnologies.com/` across all `canonical` tags, `metadataBase`, OG `og:url`, and JSON-LD schemas (`Organization`, `WebSite`, `Service`, `SoftwareApplication`).
+- [x] **Canonical Domain & Tags**: Enforced non-www `https://discovercrewtechnologies.com/` across all `canonical` tags, `metadataBase`, OG `og:url`, and JSON-LD schemas (`Organization`, `WebSite`, `Service`, `SoftwareApplication`, `BreadcrumbList`).
 - [x] **Server/Edge Level 301 Redirect**: Verified `www.discovercrewtechnologies.com` permanently redirects to `https://discovercrewtechnologies.com/` with 301/308 header and path preservation.
 - [x] **XML Sitemap & Robots.txt**: `app/sitemap.js` dynamically generates all 13 non-www canonical URLs; `app/robots.js` allows crawling and points strictly to `https://discovercrewtechnologies.com/sitemap.xml`.
-- [x] **Structured Data Syntax**: Valid JSON-LD for Organization, WebSite, Service, and SoftwareApplication entities using non-www domain.
+- [x] **GEO Files**: `public/llms.txt` and `public/llms-full.txt` live and accessible for LLMs and AI search bots.
+- [x] **Structured Data Syntax**: Valid JSON-LD for Organization, WebSite, Service, BreadcrumbList, and SoftwareApplication entities using non-www domain.
+- [x] **Google Search Console**: File verification placed in `public/` and verification meta tag added to root layout.
 - [x] **Internal Linking & Zero www Audit**: Grep code search confirmed zero accidental `www` URLs in codebase, metadata, or sitemaps.
 - [x] **E-E-A-T Compliance**: Zero fake statistics or fabricated testimonials. Factual founder and capability disclosures.
 - [x] **Mobile Responsiveness & CSS**: Sub-page styling container supporting clean vertical scrolling on mobile and desktop viewports.
@@ -98,11 +108,11 @@ This document records the full-spectrum audit and implementation fixes performed
 
 ---
 
-## 5. Expected SEO Impact
+## 5. Expected SEO & GEO Impact
 
 1. **Elimination of Duplicate Content**: All link equity, PageRank, and crawl budget consolidated strictly under `https://discovercrewtechnologies.com/`.
 2. **Google Indexing**: All 13 canonical URLs will be indexed cleanly without 404 errors or split domain canonicals.
 3. **Google AI Overview / Semantic Search**: Concise definitions of Discover Crew Technologies clear ambiguity for AI answer engines.
-4. **Organic Search Rankings**: High relevance for queries like *"custom software development company"*, *"AI automation services"*, and *"Ventura AI"*.
-5. **User Trust & Conversion**: Direct business copy and real founder background build confidence, raising inquiry conversion rates.
-
+4. **LLM Citation & GEO Readiness**: `llms.txt` and AI crawler rules allow ChatGPT, Perplexity, and Gemini to reliably extract and cite Discover Crew's authentic services and contact details.
+5. **Organic Search Rankings**: High relevance for queries like *"custom software development company in India"*, *"Next.js development company in India"*, *"AI automation services"*, and *"Ventura AI"*.
+6. **User Trust & Conversion**: Direct business copy and real founder background build confidence, raising inquiry conversion rates.

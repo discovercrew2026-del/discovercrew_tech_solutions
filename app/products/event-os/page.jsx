@@ -4,7 +4,7 @@ import Navigation from '../../components/Navigation';
 
 export const metadata = {
   title: 'Event OS — Event Management Platform | Discover Crew Technologies',
-  description: 'Event OS is an all-in-one event management platform currently under active development by Discover Crew Technologies.',
+  description: 'Event OS is an all-in-one event management platform currently under active development by Discover Crew Technologies in India and globally.',
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/products/event-os',
   },
@@ -27,6 +27,31 @@ const productSchema = {
     'name': 'Discover Crew Technologies',
     'url': 'https://discovercrewtechnologies.com'
   }
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Products',
+      'item': 'https://discovercrewtechnologies.com/products'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Event OS',
+      'item': 'https://discovercrewtechnologies.com/products/event-os'
+    }
+  ]
 };
 
 const faqSchema = {
@@ -61,11 +86,23 @@ export default function EventOSPage() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
 
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <Link href="/products" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Products</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>Event OS</span>
+        </div>
+
         <div className="eyebrow"><span className="eyebrow-dot"></span> PRODUCT IN DEVELOPMENT</div>
         <h1 className="subpage-h1">🗓️ Event OS <span className="acc">Event Management Platform</span></h1>
         <p className="subpage-lead">

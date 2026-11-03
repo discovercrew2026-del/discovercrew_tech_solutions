@@ -4,7 +4,7 @@ import Navigation from '../components/Navigation';
 
 export const metadata = {
   title: 'About Discover Crew Technologies | Software & Digital Engineering',
-  description: 'Learn about Discover Crew Technologies — a technology company focused on custom software development, web & mobile applications, AI automation, and SaaS products.',
+  description: 'Learn about Discover Crew Technologies — a technology company in India focused on custom software development, web & mobile applications, AI automation, and SaaS products.',
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/about',
   },
@@ -33,6 +33,24 @@ const aboutPageSchema = {
   }
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'About Us',
+      'item': 'https://discovercrewtechnologies.com/about'
+    }
+  ]
+};
 
 const teamMembers = [
   { name: 'Rohith', role: 'Founder & Full Stack Developer', img: '/Paul New.png', desc: 'Focuses on web architecture, Next.js application development, cloud infrastructure, and full-stack software engineering.' },
@@ -41,9 +59,23 @@ const teamMembers = [
 export default function AboutPage() {
   return (
     <div className="subpage-container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navigation />
 
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>About Us</span>
+        </div>
+
         <div className="eyebrow"><span className="eyebrow-dot"></span> ABOUT THE COMPANY</div>
         <h1 className="subpage-h1">Discover Crew <span className="acc">Technologies</span></h1>
         <p className="subpage-lead">

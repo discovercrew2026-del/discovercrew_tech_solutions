@@ -1,10 +1,11 @@
 import React from 'react';
+import Link from 'next/link';
 import Navigation from '../components/Navigation';
 import ContactForm from './ContactForm';
 
 export const metadata = {
   title: 'Contact Discover Crew Technologies | Start a Software Project',
-  description: 'Contact Discover Crew Technologies to discuss custom software development, mobile apps, AI automation, or SaaS development projects. Get in touch via form or WhatsApp.',
+  description: 'Contact Discover Crew Technologies in India to discuss custom software development, mobile apps, AI automation, or SaaS development projects. Reach out via form or WhatsApp.',
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/contact',
   },
@@ -15,12 +16,60 @@ export const metadata = {
   },
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Contact',
+      'item': 'https://discovercrewtechnologies.com/contact'
+    }
+  ]
+};
+
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  'name': 'Contact Discover Crew Technologies',
+  'url': 'https://discovercrewtechnologies.com/contact',
+  'description': 'Contact Discover Crew Technologies for custom software development, AI solutions, web applications, and SaaS engineering.',
+  'mainEntity': {
+    '@type': 'Organization',
+    'name': 'Discover Crew Technologies',
+    'telephone': '+918438207188',
+    'email': 'discovercrew2026@gmail.com',
+    'url': 'https://discovercrewtechnologies.com'
+  }
+};
+
 export default function ContactPage() {
   return (
     <div className="subpage-container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navigation />
 
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>Contact</span>
+        </div>
+
         <div className="eyebrow"><span className="eyebrow-dot"></span> GET IN TOUCH</div>
         <h1 className="subpage-h1">Start Your Project with <span className="acc">Discover Crew</span></h1>
         <p className="subpage-lead">

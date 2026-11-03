@@ -4,7 +4,7 @@ import Navigation from '../../components/Navigation';
 
 export const metadata = {
   title: 'Mobile Application Development Services | Discover Crew Technologies',
-  description: 'Custom iOS and Android mobile app development by Discover Crew Technologies. We build fast, intuitive cross-platform mobile apps for businesses.',
+  description: 'Custom iOS and Android mobile app development by Discover Crew Technologies in India and globally. We build fast, intuitive cross-platform mobile apps for businesses.',
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/services/mobile-development',
   },
@@ -20,7 +20,36 @@ const serviceSchema = {
     'url': 'https://discovercrewtechnologies.com'
   },
   'serviceType': 'Mobile App Development',
-  'description': 'End-to-end mobile application engineering for iOS and Android platforms.'
+  'description': 'End-to-end mobile application engineering for iOS and Android platforms.',
+  'areaServed': [
+    { '@type': 'Country', 'name': 'India' },
+    { '@type': 'AdministrativeArea', 'name': 'Worldwide' }
+  ]
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Services',
+      'item': 'https://discovercrewtechnologies.com/services'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Mobile Development',
+      'item': 'https://discovercrewtechnologies.com/services/mobile-development'
+    }
+  ]
 };
 
 const faqSchema = {
@@ -79,11 +108,23 @@ export default function MobileDevelopmentPage() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
 
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <Link href="/services" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Services</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>Mobile Development</span>
+        </div>
+
         <div className="eyebrow"><span className="eyebrow-dot"></span> MOBILE ENGINEERING</div>
         <h1 className="subpage-h1">Mobile Application <span className="acc">Development Services</span></h1>
         <p className="subpage-lead">

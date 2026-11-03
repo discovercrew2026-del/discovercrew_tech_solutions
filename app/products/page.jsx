@@ -10,6 +10,25 @@ export const metadata = {
   },
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Products',
+      'item': 'https://discovercrewtechnologies.com/products'
+    }
+  ]
+};
+
 const products = [
   {
     slug: 'ventura-ai',
@@ -36,9 +55,19 @@ const products = [
 export default function ProductsPage() {
   return (
     <div className="subpage-container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navigation />
 
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>Products</span>
+        </div>
+
         <div className="eyebrow"><span className="eyebrow-dot"></span> PROPRIETARY SOFTWARE</div>
         <h1 className="subpage-h1">Discover Crew <span className="acc">Products</span></h1>
         <p className="subpage-lead">

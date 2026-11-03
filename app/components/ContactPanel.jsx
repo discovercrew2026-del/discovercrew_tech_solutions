@@ -53,7 +53,7 @@ export default function ContactPanel({ isActive }) {
       if (!response.ok || !responseData.success) {
         throw new Error(responseData.error || 'Failed to send message');
       }
-      
+
       setBtnText('✓ Message Sent!');
       setBtnStyle({ background: 'var(--cyan)', color: '#050811' });
       setTimeout(() => {
@@ -130,22 +130,22 @@ export default function ContactPanel({ isActive }) {
             </form>
           </div>
           <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-            <a 
-              href="https://linkedin.com/company/discover-crew-technologies" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://linkedin.com/company/discover-crew-technologies"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ color: 'var(--w50)', fontSize: '.8rem', textDecoration: 'none' }}
-              onMouseOver={(e) => e.target.style.color = 'var(--cyan)'} 
+              onMouseOver={(e) => e.target.style.color = 'var(--cyan)'}
               onMouseOut={(e) => e.target.style.color = 'var(--w50)'}
             >
               LinkedIn
             </a>
-            <a 
-              href="https://twitter.com/discovercrew" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://twitter.com/discovercrew"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ color: 'var(--w50)', fontSize: '.8rem', textDecoration: 'none' }}
-              onMouseOver={(e) => e.target.style.color = 'var(--cyan)'} 
+              onMouseOver={(e) => e.target.style.color = 'var(--cyan)'}
               onMouseOut={(e) => e.target.style.color = 'var(--w50)'}
             >
               Twitter/X
@@ -161,7 +161,7 @@ export default function ContactPanel({ isActive }) {
             aria-label="Chat with Discover Crew on WhatsApp"
           >
             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '20px', height: '20px', flexShrink: 0 }}>
-              <path fill="currentColor" d="M16 0C7.164 0 0 7.163 0 16c0 2.822.737 5.469 2.027 7.773L0 32l8.489-2.001A15.926 15.926 0 0 0 16 32c8.836 0 16-7.163 16-16S24.836 0 16 0zm8.293 22.979c-.344.968-1.703 1.77-2.793 2.003-.744.158-1.715.284-4.985-1.071-4.181-1.706-6.873-5.944-7.082-6.218-.2-.273-1.679-2.236-1.679-4.265 0-2.029 1.062-3.024 1.44-3.44.344-.372.748-.465 1-.465l.716.013c.23.01.538-.087.842.641.312.748 1.062 2.577 1.156 2.767.093.19.155.413.03.667-.124.254-.186.413-.373.636-.186.224-.392.5-.56.673-.186.19-.38.397-.163.779.217.382.963 1.588 2.067 2.573 1.42 1.263 2.617 1.654 2.999 1.839.382.186.604.155.826-.093.223-.248.956-1.116 1.212-1.499.254-.382.508-.317.857-.19.348.127 2.213 1.043 2.594 1.232.382.19.636.285.73.444.093.158.093.914-.252 1.882z"/>
+              <path fill="currentColor" d="M16 0C7.164 0 0 7.163 0 16c0 2.822.737 5.469 2.027 7.773L0 32l8.489-2.001A15.926 15.926 0 0 0 16 32c8.836 0 16-7.163 16-16S24.836 0 16 0zm8.293 22.979c-.344.968-1.703 1.77-2.793 2.003-.744.158-1.715.284-4.985-1.071-4.181-1.706-6.873-5.944-7.082-6.218-.2-.273-1.679-2.236-1.679-4.265 0-2.029 1.062-3.024 1.44-3.44.344-.372.748-.465 1-.465l.716.013c.23.01.538-.087.842.641.312.748 1.062 2.577 1.156 2.767.093.19.155.413.03.667-.124.254-.186.413-.373.636-.186.224-.392.5-.56.673-.186.19-.38.397-.163.779.217.382.963 1.588 2.067 2.573 1.42 1.263 2.617 1.654 2.999 1.839.382.186.604.155.826-.093.223-.248.956-1.116 1.212-1.499.254-.382.508-.317.857-.19.348.127 2.213 1.043 2.594 1.232.382.19.636.285.73.444.093.158.093.914-.252 1.882z" />
             </svg>
             Chat on WhatsApp
           </a>

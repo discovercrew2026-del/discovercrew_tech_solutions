@@ -4,7 +4,7 @@ import Navigation from '../../components/Navigation';
 
 export const metadata = {
   title: 'Web Application Development Services | Discover Crew Technologies',
-  description: 'Discover Crew Technologies builds fast, secure, and scalable web applications using Next.js, React, and modern full-stack technologies.',
+  description: 'Discover Crew Technologies builds fast, secure, and scalable web applications using Next.js, React, and modern full-stack technologies in India and worldwide.',
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/services/web-development',
   },
@@ -26,7 +26,35 @@ const serviceSchema = {
   },
   'serviceType': 'Web Development',
   'description': 'Custom web application development engineered for high performance, accessibility, SEO, and cloud scalability.',
-  'areaServed': 'Worldwide'
+  'areaServed': [
+    { '@type': 'Country', 'name': 'India' },
+    { '@type': 'AdministrativeArea', 'name': 'Worldwide' }
+  ]
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Services',
+      'item': 'https://discovercrewtechnologies.com/services'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Web Development',
+      'item': 'https://discovercrewtechnologies.com/services/web-development'
+    }
+  ]
 };
 
 const faqSchema = {
@@ -76,7 +104,6 @@ const faqSchema = {
   ]
 };
 
-
 export default function WebDevelopmentPage() {
   return (
     <div className="subpage-container">
@@ -86,11 +113,23 @@ export default function WebDevelopmentPage() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
 
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <Link href="/services" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Services</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>Web Development</span>
+        </div>
+
         <div className="eyebrow"><span className="eyebrow-dot"></span> WEB ENGINEERING</div>
         <h1 className="subpage-h1">Web Application <span className="acc">Development Services</span></h1>
         <p className="subpage-lead">

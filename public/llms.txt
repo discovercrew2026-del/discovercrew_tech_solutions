@@ -1,0 +1,31 @@
+# Discover Crew Technologies
+
+> Discover Crew Technologies is a custom software development, SaaS engineering, AI automation, and AI marketing company founded by Rohith. Headquartered in India and serving clients worldwide, the company builds high-performance web applications, cross-platform mobile apps, cloud-native SaaS platforms, and intelligent business automation solutions.
+
+## Core Services
+
+- [Web Application Development](https://discovercrewtechnologies.com/services/web-development): Fast, scalable, SEO-optimized web applications built with Next.js, React, Node.js, and modern cloud architectures.
+- [Mobile App Development](https://discovercrewtechnologies.com/services/mobile-development): Native and cross-platform mobile applications for iOS and Android engineered for intuitive UX and seamless API integration.
+- [Custom Software Development](https://discovercrewtechnologies.com/services/software-development): Purpose-built enterprise software, internal tools, ERP solutions, and custom backend systems designed to solve specific operational bottlenecks.
+- [AI & Business Automation](https://discovercrewtechnologies.com/services/ai-automation): Custom AI agent workflows, large language model (LLM) integrations, document processing pipelines, and autonomous operational automation.
+- [SaaS Platform Development](https://discovercrewtechnologies.com/services/saas-development): End-to-end multi-tenant SaaS architecture, secure user onboarding, role-based access control (RBAC), and automated subscription infrastructure.
+- [AI Marketing & Growth Automation](https://discovercrewtechnologies.com/services/ai-marketing): Data-driven technical SEO, automated marketing funnels, audience targeting pipelines, and conversion rate optimization (CRO).
+
+## Flagship Products
+
+- [Ventura AI](https://discovercrewtechnologies.com/products/ventura-ai): An intelligent AI-powered business management platform designed to automate everyday company operations and reporting.
+- [Event OS](https://discovercrewtechnologies.com/products/event-os): Comprehensive event lifecycle management and ticketing operating system (currently under development).
+
+## Company Information
+
+- **Legal / Brand Name**: Discover Crew Technologies
+- **Founder**: Rohith (Founder & Full Stack Developer)
+- **Primary Website**: https://discovercrewtechnologies.com
+- **Contact Number / WhatsApp**: +91 84382 07188
+- **Email**: discovercrew2026@gmail.com
+- **Geographic Focus**: India & Global Enterprises
+- **Target Audience**: Startups, SMBs, growing enterprises, and founders building scalable digital solutions.
+
+## Optional Extended Documentation
+
+- [Full Architecture & Documentation](https://discovercrewtechnologies.com/llms-full.txt)

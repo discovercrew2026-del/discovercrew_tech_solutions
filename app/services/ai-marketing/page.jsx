@@ -4,7 +4,7 @@ import Navigation from '../../components/Navigation';
 
 export const metadata = {
   title: 'AI Marketing & Growth Automation Services | Discover Crew Technologies',
-  description: 'Accelerate business growth with AI-driven marketing, intelligent SEO automation, predictive analytics, AI content workflows, and conversion rate optimization.',
+  description: 'Accelerate business growth with AI-driven marketing, intelligent SEO automation, predictive analytics, AI content workflows, and conversion rate optimization in India and globally.',
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/services/ai-marketing',
   },
@@ -19,7 +19,36 @@ const serviceSchema = {
     'name': 'Discover Crew Technologies',
     'url': 'https://discovercrewtechnologies.com'
   },
-  'serviceType': 'AI Marketing & Growth Automation'
+  'serviceType': 'AI Marketing & Growth Automation',
+  'areaServed': [
+    { '@type': 'Country', 'name': 'India' },
+    { '@type': 'AdministrativeArea', 'name': 'Worldwide' }
+  ]
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Services',
+      'item': 'https://discovercrewtechnologies.com/services'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'AI Marketing & Automation',
+      'item': 'https://discovercrewtechnologies.com/services/ai-marketing'
+    }
+  ]
 };
 
 const faqSchema = {
@@ -70,11 +99,23 @@ export default function AIMarketingPage() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
 
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <Link href="/services" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Services</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>AI Marketing</span>
+        </div>
+
         <div className="eyebrow"><span className="eyebrow-dot"></span> AI MARKETING & GROWTH</div>
         <h1 className="subpage-h1">AI Marketing & <span className="acc">Growth Automation</span></h1>
         <p className="subpage-lead">

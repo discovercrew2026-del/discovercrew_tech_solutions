@@ -34,6 +34,31 @@ const productSchema = {
   }
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Products',
+      'item': 'https://discovercrewtechnologies.com/products'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Ventura AI',
+      'item': 'https://discovercrewtechnologies.com/products/ventura-ai'
+    }
+  ]
+};
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -74,11 +99,23 @@ export default function VenturaAIPage() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
 
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <Link href="/products" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Products</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>Ventura AI</span>
+        </div>
+
         <div className="eyebrow"><span className="eyebrow-dot"></span> FLAGSHIP PRODUCT</div>
         <h1 className="subpage-h1">⚡ Ventura AI <span className="acc">Business Platform</span></h1>
         <p className="subpage-lead">

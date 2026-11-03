@@ -4,7 +4,7 @@ import Navigation from '../../components/Navigation';
 
 export const metadata = {
   title: 'AI Automation & Integration Services | Discover Crew Technologies',
-  description: 'Streamline business operations with custom AI integrations, LLM workflows, customer service automation, and process automation by Discover Crew Technologies.',
+  description: 'Streamline business operations with custom AI integrations, LLM workflows, customer service automation, and process automation by Discover Crew Technologies in India and globally.',
   alternates: {
     canonical: 'https://discovercrewtechnologies.com/services/ai-automation',
   },
@@ -19,7 +19,36 @@ const serviceSchema = {
     'name': 'Discover Crew Technologies',
     'url': 'https://discovercrewtechnologies.com'
   },
-  'serviceType': 'AI Integration & Business Automation'
+  'serviceType': 'AI Integration & Business Automation',
+  'areaServed': [
+    { '@type': 'Country', 'name': 'India' },
+    { '@type': 'AdministrativeArea', 'name': 'Worldwide' }
+  ]
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://discovercrewtechnologies.com'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Services',
+      'item': 'https://discovercrewtechnologies.com/services'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'AI Automation',
+      'item': 'https://discovercrewtechnologies.com/services/ai-automation'
+    }
+  ]
 };
 
 const faqSchema = {
@@ -78,11 +107,23 @@ export default function AIAutomationPage() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
 
       <main className="subpage-hero">
+        <div style={{ fontSize: '0.85rem', color: 'var(--w50)', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <Link href="/services" style={{ color: 'var(--cyan)', textDecoration: 'none' }}>Services</Link>
+          <span style={{ margin: '0 0.5rem' }}>/</span>
+          <span>AI Automation</span>
+        </div>
+
         <div className="eyebrow"><span className="eyebrow-dot"></span> AI & WORKFLOW AUTOMATION</div>
         <h1 className="subpage-h1">AI Automation Solutions <span className="acc">for Business</span></h1>
         <p className="subpage-lead">
